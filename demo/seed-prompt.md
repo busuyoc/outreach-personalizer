@@ -1,0 +1,1 @@
+$outreach-personalizer Use the company and buyer role described in demo/input/plausible.md — fetch https://plausible.io live if you can, otherwise use the cached snapshot in that same file — and produce the personalized-vs-generic comparison with a verdict and the closing GTM signal block, written incrementally to demo/output/plausible.md.

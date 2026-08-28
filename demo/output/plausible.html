@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outreach comparison — Plausible Analytics</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 880px;
+         margin: 2rem auto; padding: 0 1.25rem; color: #1a1a1a; background: #fafafa; line-height: 1.55; }
+  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: .06em; color: #555;
+       border-bottom: 2px solid #e2e2e2; padding-bottom: .3rem; margin-top: 2rem; }
+  .status { display: inline-block; background: #e7f5ea; color: #1b6e2e; border: 1px solid #bfe3c8;
+            border-radius: 4px; padding: .15rem .6rem; font-size: .85rem; font-weight: 600; }
+  .note { background: #fff8e6; border: 1px solid #eadfb8; border-radius: 6px; padding: .6rem .9rem;
+          font-size: .9rem; margin: 1rem 0; }
+  table { border-collapse: collapse; width: 100%; margin: .75rem 0; background: #fff; }
+  th, td { border: 1px solid #ddd; padding: .5rem .7rem; text-align: left; font-size: .95rem; }
+  th { background: #f0f0f0; }
+  .win { font-weight: 700; color: #1b6e2e; }
+  blockquote { background: #fff; border-left: 4px solid #c9c9c9; margin: .8rem 0; padding: .7rem 1rem;
+               border-radius: 0 6px 6px 0; }
+  blockquote.personalized { border-left-color: #1b6e2e; }
+  .label { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #666; }
+  .verdict { background: #eef4fb; border: 1px solid #c9dcf1; border-radius: 6px; padding: .9rem 1.1rem; }
+  footer { margin-top: 2.5rem; font-size: .8rem; color: #777; border-top: 1px solid #e2e2e2; padding-top: .8rem; }
+  ol li, ul li { margin: .3rem 0; }
+  code { background: #efefef; padding: .05rem .3rem; border-radius: 3px; font-size: .9em; }
+</style>
+</head>
+<body>
+<h1>Outreach comparison — Plausible Analytics</h1>
+<p><span class="status">Status: complete (pre-event fallback run)</span></p>
+
+<div class="note">Rendering of <code>demo/output/plausible.md</code> — the genuine fallback run
+produced 2026-08-28 ahead of the event, under the skill's steps as they stood at that run.
+The <strong>GTM signal</strong> block was added to the skill after this run, so this page does not
+have one; the live venue re-run produces it.</div>
+
+<h2>Scores — blind critic pass (identities withheld)</h2>
+<table>
+  <tr><th></th><th>Email A — generic</th><th>Email B — personalized</th></tr>
+  <tr><td>Company-specific evidence used</td><td>none (by design)</td><td>2 grounded facts</td></tr>
+  <tr><td>Reply likelihood (decides)</td><td>3 / 5</td><td class="win">4 / 5</td></tr>
+  <tr><td>Specificity</td><td>1 / 5</td><td class="win">5 / 5</td></tr>
+  <tr><td>Credibility</td><td>4 / 5</td><td class="win">5 / 5</td></tr>
+</table>
+
+<div class="verdict"><strong>Verdict:</strong> Personalized wins on reply likelihood (4/5 vs. 3/5)
+against a genuinely strong generic competitor — not a strawman. The margin is real but not a
+landslide. The win traces to one specific, honestly-used piece of evidence (Plausible's
+auditability positioning), not to volume of personalization or a weakened baseline.</div>
+
+<h2>Evidence — every claim traces to a fetched page</h2>
+<ol>
+  <li>&ldquo;GA4's source is not auditable; Plausible's is open source on GitHub.&rdquo; — <code>/vs-google-analytics</code></li>
+  <li>&ldquo;Plausible collects no personal data and requires no consent banner.&rdquo; — <code>/vs-google-analytics</code></li>
+  <li>&ldquo;Self-serve pricing, $9–19/mo, funded by subscriptions — not by monetizing data.&rdquo; — homepage pricing + <code>/vs-google-analytics</code></li>
+</ol>
+<p><span class="label">Retrieval</span> — <code>https://plausible.io</code> and
+<code>https://plausible.io/vs-google-analytics</code>, both live fetches, 2026-08-28.
+Buyer role simulated: <strong>Head of Growth</strong>.</p>
+
+<h2>The two emails — same offer, same structure</h2>
+<p class="label">Email A — generic (strong baseline)</p>
+<blockquote>Hi — most growth teams say a good chunk of outbound gets ignored because it's clearly
+not researched. We built a tool that pulls public info on each prospect and drafts a genuinely
+specific opening line automatically, instead of reps starting from a blank template. Worth 10
+minutes to see if it'd save your team time on outreach?</blockquote>
+<p class="label">Email B — personalized (evidence-grounded)</p>
+<blockquote class="personalized">Hi — saw your GA4 comparison leads with &ldquo;source not
+auditable&rdquo; vs. yours being open source. Same standard I'd hold outreach tooling to: this only
+uses public info, no tracking, nothing you can't verify. You're self-serve and funded by
+subscriptions, not data — which is honestly why most outbound-automation pitches probably don't
+fit a team like yours. If there's one manual prospect-research step still eating time, I'd rather
+hear about that than pitch a call.</blockquote>
+
+<footer>Produced 2026-08-28 ahead of the event via Claude Code, run genuinely against the live
+plausible.io homepage and comparison page; rewritten once after external review flagged the first
+generic baseline as a strawman. This HTML is a faithful reformatting of the committed markdown
+fallback — no content beyond it. Full audit trail: <code>demo/output/plausible.md</code>.</footer>
+</body>
+</html>

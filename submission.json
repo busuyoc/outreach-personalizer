@@ -1,0 +1,18 @@
+{
+  "schema_version": 2,
+  "team": {
+    "name": "Claudiu Busuioc",
+    "members": ["Claudiu Busuioc"]
+  },
+  "track": "personalized-growth-engines",
+  "problem": "Deciding what a cold email to a given company should say, and whether custom outreach is even worth it there: outreach-personalizer fetches the company's real site, blind-tests an evidence-grounded pitch against a strong generic baseline, and distills the result into an actionable GTM signal — pain hypothesis, evidence strength, winning angle.",
+  "entry_skill": ".agents/skills/outreach-personalizer/SKILL.md",
+  "skills": [
+    { "path": ".agents/skills/outreach-personalizer/SKILL.md", "role": "Fetches a prospect's site, simulates the named buyer role's reaction, drafts and scores personalized vs. generic outreach" }
+  ],
+  "seed_prompt": "demo/seed-prompt.md",
+  "input": "demo/input/plausible.md",
+  "output": "demo/output/plausible.md",
+  "evals": "demo/evals.md",
+  "run_sheet": "DEMO.md"
+}
