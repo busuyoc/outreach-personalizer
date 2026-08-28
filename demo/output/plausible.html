@@ -3,81 +3,90 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Outreach comparison — Plausible Analytics</title>
+<title>Plausible — Account Message Test</title>
 <style>
-  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 880px;
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 900px;
          margin: 2rem auto; padding: 0 1.25rem; color: #1a1a1a; background: #fafafa; line-height: 1.55; }
-  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
-  h2 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: .06em; color: #555;
+  h1 { font-size: 1.55rem; margin-bottom: .25rem; }
+  h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: .06em; color: #555;
        border-bottom: 2px solid #e2e2e2; padding-bottom: .3rem; margin-top: 2rem; }
   .status { display: inline-block; background: #e7f5ea; color: #1b6e2e; border: 1px solid #bfe3c8;
             border-radius: 4px; padding: .15rem .6rem; font-size: .85rem; font-weight: 600; }
-  .note { background: #fff8e6; border: 1px solid #eadfb8; border-radius: 6px; padding: .6rem .9rem;
-          font-size: .9rem; margin: 1rem 0; }
+  .signal { background: #eef4fb; border: 1px solid #c9dcf1; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; }
+  .signal dt { font-weight: 700; margin-top: .6rem; font-size: .82rem; text-transform: uppercase; letter-spacing: .05em; color: #35567a; }
+  .signal dd { margin: .15rem 0 0 0; }
+  .decision { font-size: 1.05rem; font-weight: 700; color: #1b6e2e; }
   table { border-collapse: collapse; width: 100%; margin: .75rem 0; background: #fff; }
-  th, td { border: 1px solid #ddd; padding: .5rem .7rem; text-align: left; font-size: .95rem; }
+  th, td { border: 1px solid #ddd; padding: .5rem .7rem; text-align: left; font-size: .93rem; vertical-align: top; }
   th { background: #f0f0f0; }
   .win { font-weight: 700; color: #1b6e2e; }
   blockquote { background: #fff; border-left: 4px solid #c9c9c9; margin: .8rem 0; padding: .7rem 1rem;
                border-radius: 0 6px 6px 0; }
   blockquote.personalized { border-left-color: #1b6e2e; }
   .label { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #666; }
-  .verdict { background: #eef4fb; border: 1px solid #c9dcf1; border-radius: 6px; padding: .9rem 1.1rem; }
   footer { margin-top: 2.5rem; font-size: .8rem; color: #777; border-top: 1px solid #e2e2e2; padding-top: .8rem; }
   ol li, ul li { margin: .3rem 0; }
   code { background: #efefef; padding: .05rem .3rem; border-radius: 3px; font-size: .9em; }
+  .ledger td:first-child { font-weight: 700; white-space: nowrap; font-size: .85rem; }
 </style>
 </head>
 <body>
-<h1>Outreach comparison — Plausible Analytics</h1>
-<p><span class="status">Status: complete (pre-event fallback run)</span></p>
+<h1>Plausible Analytics — Account Message Test</h1>
+<p><span class="status">Status: complete</span> &nbsp; Buyer role: <strong>Head of Growth at Plausible</strong> · homepage fetched <strong>live</strong> 2026-08-28 · comparison page from the committed cached snapshot, marked honestly</p>
 
-<div class="note">Rendering of <code>demo/output/plausible.md</code> — the genuine fallback run
-produced 2026-08-28 ahead of the event, under the skill's steps as they stood at that run.
-The <strong>GTM signal</strong> block was added to the skill after this run, so this page does not
-have one; the live venue re-run produces it.</div>
+<h2>GTM signal — the decision</h2>
+<div class="signal"><dl>
+  <dt>Recommended effort</dt><dd class="decision">Personalize — medium evidence, positive lift; credible enough for initial outreach to a small target group</dd>
+  <dt>Buyer pain hypothesis</dt><dd>GTM teams at privacy-first SaaS companies face compliance overhead in their own workflows, the same problem their product solves for customers.</dd>
+  <dt>Evidence strength</dt><dd>Medium: two concrete traceable claims (GA4's 55.6% traffic loss; GDPR rulings in seven EU nations) support the compliance-first angle, but neither states the internal GTM pain outright — the inference is sound, not a public commitment.</dd>
+  <dt>Personalization lift</dt><dd>Wins — 4/5 vs. 3/5 on reply likelihood; the generic baseline passed the strawman bar (3 &gt; 2), so the comparison is valid.</dd>
+  <dt>Winning angle</dt><dd>Compliance-first GTM automation: not a speed play, a way to keep growth workflows aligned with the company's core identity (privacy, reliability, independence).</dd>
+  <dt>Next probe</dt><dd>Check Plausible's blog or changelog for public discussion of GTM automation or growth-team scaling — would raise evidence strength to high.</dd>
+  <dt>Reusable hypothesis</dt><dd>Growth leaders at bootstrapped, privacy-focused SaaS companies may engage more with GTM automation pitched on compliance alignment and data reliability than on speed or scale. To test across accounts; one account proves nothing.</dd>
+</dl></div>
 
-<h2>Scores — blind critic pass (identities withheld)</h2>
+<h2>Blind test — scores</h2>
+<p class="label">Slot assignment, shown: slug <code>plausible</code> = 9 letters (odd) → personalized is Email A. Both emails checked against one written problem hypothesis before scoring.</p>
 <table>
-  <tr><th></th><th>Email A — generic</th><th>Email B — personalized</th></tr>
-  <tr><td>Company-specific evidence used</td><td>none (by design)</td><td>2 grounded facts</td></tr>
-  <tr><td>Reply likelihood (decides)</td><td>3 / 5</td><td class="win">4 / 5</td></tr>
-  <tr><td>Specificity</td><td>1 / 5</td><td class="win">5 / 5</td></tr>
-  <tr><td>Credibility</td><td>4 / 5</td><td class="win">5 / 5</td></tr>
+  <tr><th></th><th>Email A — personalized</th><th>Email B — generic</th></tr>
+  <tr><td>Reply likelihood (decides)</td><td class="win">4 / 5</td><td>3 / 5</td></tr>
+  <tr><td>Specificity</td><td class="win">4 / 5</td><td>2 / 5</td></tr>
+  <tr><td>Credibility</td><td>4 / 5</td><td>4 / 5</td></tr>
 </table>
 
-<div class="verdict"><strong>Verdict:</strong> Personalized wins on reply likelihood (4/5 vs. 3/5)
-against a genuinely strong generic competitor — not a strawman. The margin is real but not a
-landslide. The win traces to one specific, honestly-used piece of evidence (Plausible's
-auditability positioning), not to volume of personalization or a weakened baseline.</div>
+<h2>The two emails — same offer, same structure, same CTA</h2>
+<p class="label">Personalized · subject: "Automating GTM without compliance friction" · 66 words</p>
+<blockquote class="personalized">You built Plausible because you knew analytics teams were hemorrhaging data to ad blockers and consent friction. That same problem hits GTM workflows: when tools don't align on compliance, your team loses cycles to manual handoffs instead of optimization.<br><br>
+We help growth teams automate those workflows with AI agents, keeping every connection clean and compliant.<br><br>
+Does your team spend more time building connections than running experiments?</blockquote>
+<p class="label">Generic (strong baseline) · subject: "When GTM automation compounds" · 68 words</p>
+<blockquote>Every time your GTM stack grows, so does the friction between systems. Manual handoffs between analytics, CRM, and campaign tools multiply the cycles your team spends stitching data together instead of optimizing the funnel.<br><br>
+We help growth teams automate those workflows with AI agents, connecting your data sources, triggering actions, and surfacing insights without the integration overhead.<br><br>
+Does your team spend more time building connections than running experiments?</blockquote>
 
-<h2>Evidence — every claim traces to a fetched page</h2>
+<h2>Evidence — three items, each traceable</h2>
 <ol>
-  <li>&ldquo;GA4's source is not auditable; Plausible's is open source on GitHub.&rdquo; — <code>/vs-google-analytics</code></li>
-  <li>&ldquo;Plausible collects no personal data and requires no consent banner.&rdquo; — <code>/vs-google-analytics</code></li>
-  <li>&ldquo;Self-serve pricing, $9–19/mo, funded by subscriptions — not by monetizing data.&rdquo; — homepage pricing + <code>/vs-google-analytics</code></li>
+  <li>"Data protection authorities in seven EU nations ruled GA4 violates GDPR over data transfers. Plausible processes all data on EU servers, no cookie consent banner required." — comparison page</li>
+  <li>"GA4 fails to capture an average of 55.6% of traffic vs. cookieless analytics… Plausible is far less likely to be blocked." — comparison page</li>
+  <li>"GA4 is free because Google monetizes behavioral data for ads. Plausible charges subscriptions specifically to stay independent of that model." — comparison page</li>
 </ol>
-<p><span class="label">Retrieval</span> — <code>https://plausible.io</code> and
-<code>https://plausible.io/vs-google-analytics</code>, both live fetches, 2026-08-28.
-Buyer role simulated: <strong>Head of Growth</strong>.</p>
 
-<h2>The two emails — same offer, same structure</h2>
-<p class="label">Email A — generic (strong baseline)</p>
-<blockquote>Hi — most growth teams say a good chunk of outbound gets ignored because it's clearly
-not researched. We built a tool that pulls public info on each prospect and drafts a genuinely
-specific opening line automatically, instead of reps starting from a blank template. Worth 10
-minutes to see if it'd save your team time on outreach?</blockquote>
-<p class="label">Email B — personalized (evidence-grounded)</p>
-<blockquote class="personalized">Hi — saw your GA4 comparison leads with &ldquo;source not
-auditable&rdquo; vs. yours being open source. Same standard I'd hold outreach tooling to: this only
-uses public info, no tracking, nothing you can't verify. You're self-serve and funded by
-subscriptions, not data — which is honestly why most outbound-automation pitches probably don't
-fit a team like yours. If there's one manual prospect-research step still eating time, I'd rather
-hear about that than pitch a call.</blockquote>
+<h2>Run ledger — every invariant attested</h2>
+<table class="ledger">
+  <tr><td>Offer</td><td>Given in input: "We help teams automate their GTM workflows with AI agents."</td></tr>
+  <tr><td>Fetches</td><td>Homepage → live · comparison page → cached (used without re-fetch, marked honestly) · step-3 search skipped: enough usable evidence</td></tr>
+  <tr><td>Evidence count</td><td>3 items (cap 3)</td></tr>
+  <tr><td>Slots</td><td><code>plausible</code> = 9 letters, odd → personalized is A (arithmetic shown in the critique)</td></tr>
+  <tr><td>Hypothesis lock</td><td>One written problem hypothesis; both emails quote-checked against it before scoring: <strong>yes</strong></td></tr>
+  <tr><td>Structure</td><td>Hook → problem → value → CTA in both · 66 and 68 words (≤120) · subjects 5 words each</td></tr>
+  <tr><td>Style scrub</td><td>First scrub missed 2 em dashes (one per email); caught by an external count, corrected to commas, recorded — all counts now zero on both emails</td></tr>
+  <tr><td>Fact audit</td><td>Both personalized claims map to evidence items (ad-blocker data loss → item 2; compliance alignment → item 1); generic email carries no company-specific claims</td></tr>
+  <tr><td>Critic context</td><td>Evidence list, buyer role, offer, both emails labeled A/B — no objections, no rationale, no slot rule; blind to intent, not to treatment identity</td></tr>
+</table>
 
-<footer>Produced 2026-08-28 ahead of the event via Claude Code, run genuinely against the live
-plausible.io homepage and comparison page; rewritten once after external review flagged the first
-generic baseline as a strawman. This HTML is a faithful reformatting of the committed markdown
-fallback — no content beyond it. Full audit trail: <code>demo/output/plausible.md</code>.</footer>
+<footer>Faithful rendering of <code>demo/output/plausible.md</code> — produced 2026-08-28 ~19:05–19:15 EEST,
+during the event build window, by a fresh Claude Code agent (Haiku) running the skill cold from a sandbox
+copy, plus one correction round in which the agent fixed its own false style attestation and recorded the
+catch. Nothing beyond the markdown's content. The venue Codex re-run replaces both files.</footer>
 </body>
 </html>

@@ -191,3 +191,109 @@ not reliably survive contact with a small agent — make every invariant somethi
 must SHOW. Timing note: 86s on Haiku ≈ the 75s gate is tight; the early-visible file plus
 genuine fallback is the designed mitigation (RULES: timeout with genuine fallback = pass with
 warning).
+
+## Round 4 — better results + the accountability ledger (~18:45, insights, keep)
+
+Owner directive: mechanism is welcome where it polishes the problem; no more drifts; the agent
+gets an accountability artifact. Rough edges diagnosed from the litmus artifact, then closed:
+
+1. **Bland emails** — the spec had structure and honesty but no craft floor, so a mid model
+   produced mid emails ("[Name]" placeholders, filler jargon, unbidden subject lines). Now: a
+   checkable craft bar (subjects ≤6 words on both, no placeholder tokens, first sentence earns
+   the read, jargon blacklist, question-CTA).
+2. **Score compression kills the decision layer** — both real runs produced exactly 3 vs 4; an
+   unanchored 1–5 collapses to "+1 lift → personalize" on every account, so "don't personalize"
+   never fires. Now: anchored scale (5 = publicly-committed problem … 1 = spam), score against
+   anchors not the other email, and a baseline floor — generic ≤2 = strawman bar failed =
+   comparison VOID (personalized can only win against a real competitor).
+3. **Invisible invariants** (offer ordering, one-attempt fetches, critic context, structure,
+   claim grounding) — closed by the **Run ledger**, step 9: an appendix where every invariant
+   is attested WITH evidence inline. Its strongest row is the **fact audit**: every
+   company-specific claim in the personalized email must map to an evidence item number — a
+   claim with no row must be deleted or the run is invalid. This is the systematic end of the
+   invented-implications channel.
+4. **Dead "Missing" bullets** — now feed a **Next probe** signal field: the cheapest check that
+   would most raise evidence confidence, which makes "go light / don't personalize" actionable
+   instead of a dead end.
+5. **Paraphrased "quotes"** — quotes must now be VERBATIM substrings.
+
+Design rule that emerged across rounds 3–4, worth keeping for every future skill: **an
+invariant is real only if the output must exhibit it** — attestation with inline evidence
+beats instruction every time. Cost accepted: the ledger adds ~10–15s of generation; the
+decision was results-over-latency (owner call), with the early-visible file + fallback still
+covering the stage.
+
+**Re-litmus (18:50, second fresh Haiku, sandbox):** the mechanisms FIRED — slot arithmetic
+shown and correct this time (9 → odd → personalized is A), hypothesis lock checked before
+scoring with zero drift, ledger complete including the fact audit (4/4 personalized claims
+mapped to evidence), craft bar visibly raised email quality ("Turn GA4 comparison into your
+moat" / the comparison-tax angle), anchors engaged ("why not 5" reasoning), baseline passed
+the strawman bar, no HTML. Three residual leaks, each patched in the spec immediately:
+`[Sender]` placeholder (bar now bans placeholder tokens ANYWHERE), 5 evidence items vs. cap 3
+(new ledger row attests the count — "more is treatment inflation"), and the in-progress status
+trail was cleaned away (spec now says earlier status lines STAY — they are the write log).
+Timing honest: ~3 min end-to-end on the small model — the fallback carries the stage moment
+by design. **Fallback swapped:** the pre-event curated output predated the signal block and
+ledger, so a stalled live run would have shown a fallback that no longer matches what DEMO
+promises; the re-litmus artifact (genuine, in-window, current steps, live fetches) replaced
+it, with its three deviations recorded in a provenance note inside the file, and the HTML
+re-rendered faithfully from it. The Codex venue re-run is now recommended, not blocking.
+
+## Round 5 — the anti-AI-style bar (~19:00, insights, keep)
+
+Owner fear, confirmed by our own artifact: the emails read like AI — both fallback emails
+carry em dashes and triple lists ("instrumentation, compliance messaging, customer
+onboarding"). Source material: Apify's clustering-and-formatting guideline. The integration
+choice, per that doc's own principle ("a ten-word zero-tolerance list beats a hundred-word
+'use sparingly' list"): at email scale (≤120 words) the clustering/ratio advice has no room
+to operate, so everything email-relevant became an ABSOLUTE — zero em dashes, zero comma-only
+triples, zero negative parallelism (all variants — the semantic rule, not a phrase list), zero
+banned words (merged with the old jargon blacklist), zero teased reveals/colon setups, zero
+empty intensifiers — plus the lunch-table read test as the final pass. Owner amendment
+(~19:05): three enumerated items are human when joined with a plain "and" ("X, Y and Z") —
+the tell is the MISSING CONJUNCTION and the stacked-for-rhythm parallel clause, not the count
+of items. The scrub row counts comma-only triples and stacked parallels, not enumerations. Deliberately NOT
+imported: the clustering ratios (long-form advice), the sales-pitch-pivot rule (a cold email
+IS a pitch), formulaic closers (emails end on the CTA anyway), emoji/unicode rules (no
+surface for them here). Scope: emails = hard counted zeros; the rest of the artifact avoids
+the banned words without hard counts. Enforcement follows the house rule (an invariant is
+real only if the output must exhibit it): a **Style scrub** ledger row with counted zeros,
+and a critique run on unscrubbed emails is invalid. The fallback's style deviations are
+recorded in its provenance note; the venue Codex re-run regenerates under the bar.
+
+## Round 6 — regen litmus ×2, one adopted, one autopsied (~19:20, insights, keep)
+
+Owner: "just regen, test again on new instances", plus the triple-rule amendment (three items
+joined with a plain "and" are human; the tell is the missing conjunction and the
+stacked-for-rhythm parallel, not the count). Two fresh Haiku instances ran the amended skill
+in parallel sandboxes.
+
+**Instance A — adopted as fallback** (after two touches): first stumbled by looking for the
+skill in `.claude/skills/` instead of the stated `.agents/skills/` — a fresh agent can
+substitute its HOME convention for the stated one; harmless for the judged path (Codex
+resolves `$skills` natively from `.agents/`) but real for anyone testing with other agents.
+Once pointed at the right path it produced the best artifact of the day: correct buyer
+identity, floor rule exercised explicitly ("3 > 2, comparison valid"), evidence capped at 3,
+status trail preserved, honest MEDIUM evidence grade with reasoning (the rubric finally
+discriminating — run 2 self-graded High), fact audit complete. One defect: its style scrub
+attested "em-dashes 0" while both emails contained one — a FALSE ATTESTATION caught by an
+external count (grep), which is precisely why the scrub counts externally-checkable things.
+Sent back under its own rules; it fixed the punctuation, re-counted, and recorded the catch
+in the ledger. Lesson: self-attestation is necessary but not sufficient — the ledger's value
+is that anyone can re-run the counts, and the artifact now carries its own correction as
+provenance.
+
+**Instance B — rejected, three fabrications**: invented a buyer purchase history ("You picked
+Plausible because…", "made you switch" — the buyer works AT the company; it wrote to a
+customer that doesn't exist), crossed its critique labels (scored Email A using Email B's
+sentences — the verbatim-quote rule EXPOSED the inversion mechanically), put an invented
+"1.5-2x better reply rates" statistic in the reusable hypothesis, and banked a "win" over a
+2-rated baseline instead of voiding. Each failure became a spec patch: Input now states the
+buyer is a person AT the company and inventing a purchase history is fabrication; the
+critique must open each email's section by quoting that email's subject line (crossed labels
+become visible); the reusable hypothesis may contain no numbers not present in the evidence
+("an invented multiplier is fabrication wearing a hypothesis's clothes").
+
+Meta-lesson worth keeping: the two-instance regen bought more than a fallback — instance
+variance IS the test surface. One instance validates the mechanisms; the second finds the
+failure modes the first happened not to hit.

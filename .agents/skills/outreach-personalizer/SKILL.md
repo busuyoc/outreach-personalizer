@@ -19,6 +19,10 @@ generic email is weak, the result proves nothing.
 
 A company URL and a buyer role (e.g. "Head of Growth"), given in the prompt or
 named by a file under `demo/input/`. If either is missing, ask for both and stop.
+The buyer role is a person AT that company — the recipient of the outreach. You
+write as a third-party sender pitching the offer TO them: the company is the
+prospect, never the sender, and never a tool the buyer "chose" or "switched
+to" — inventing a purchase history for the buyer is fabrication.
 Optionally, a one-line offer to pitch (the demo input's "Generic pitch to react
 to" line is this). If no offer is given, derive one from the buyer role ALONE —
 before fetching or reading any company evidence, so the offer itself is not
@@ -96,6 +100,33 @@ offer in both emails.
      genuinely supports it. If the evidence is too thin for a strong
      personalized angle, say so in the output rather than manufacturing
      specificity to force a win.
+   Craft + style bar for BOTH emails — the floor that separates a shipped
+   email from an AI-flavored one. At this length every rule is absolute
+   and countable; the ledger attests the counts:
+   - Subject ≤6 words. No placeholder tokens anywhere (no "[Name]", no
+     "[Sender]"): open with "Hi," or the first sentence, end with a plain
+     sign-off. The first sentence earns the read (never "I hope…", never
+     "My name is…"). The CTA is a question answerable in one line.
+   - ZERO em dashes. Commas, colons, periods instead.
+   - Enumerations read like speech: "X, Y and Z" is human. ZERO comma-only
+     triples ("X, Y, Z" with no "and") and ZERO stacked parallel clauses
+     built for rhythm; three items joined with a plain "and" are fine.
+   - ZERO negative parallelism: "it's not X, it's Y", "don't just X, Y",
+     "not X. Y." in any variant. State the positive claim alone; if it
+     cannot stand alone, sharpen the claim instead of propping it.
+   - ZERO banned words: streamline, leverage, seamless, robust,
+     transformative, game-changing, cutting-edge, unlock, empower,
+     elevate, harness, revolutionize, journey, "excited to",
+     "don't hesitate".
+   - ZERO teased reveals or colon setups: "Here's the thing", "The
+     reality:", "The result?". Say the thing.
+   - ZERO empty intensifiers ("actually", "genuinely", "truly"): delete
+     the word; if the sentence means the same, it stays deleted.
+   The read test for every sentence: would one operator say it to another
+   over lunch? If not, rewrite it. Vary sentence length; short is fine.
+   The rest of the artifact (hypothesis, verdict, signal) avoids the
+   banned words too, without the hard counts. The personalized subject may
+   draw on the same 1–2 evidence facts, nothing more.
 6. Blind critic pass — a separate evaluation pass with the email identities
    withheld. Precision about what "blind" means here, and say it this way
    in the output: blind to generation intent and to which email was meant
@@ -113,14 +144,26 @@ offer in both emails.
    address the written problem hypothesis from step 5 — if one swapped in
    a different problem, stop and rewrite that email: a "win" produced by
    changing the problem is an invalid comparison, not a lift. Every score
-   must quote the exact sentence (from the email or the evidence list)
-   that justifies it — an audit hook, not a proof of rigor. Score each
-   1–5 on:
+   must quote a VERBATIM substring of the email or the evidence list that
+   justifies it — a paraphrase is not a quote; this is an audit hook, not
+   a proof of rigor. Open each email's critique by quoting that email's
+   subject line: if the quoted subject does not match the email under that
+   label, the labels are crossed — fix them before scoring anything.
+   Score each 1–5 on:
    - **Reply likelihood** (primary) — would this buyer plausibly reply?
    - **Specificity** — genuine understanding of this company, not just a
      inserted name.
    - **Credibility** — are claims supported by the evidence without
      stretching it?
+   Anchor reply likelihood so scores don't cluster at 3–4: 5 = names a
+   problem this buyer has publicly committed to — replying is the path of
+   least resistance · 4 = specific and credible enough that ignoring it
+   costs the buyer something · 3 = competent; could go unchanged to a
+   dozen similar companies · 2 = template smell or one stretched claim ·
+   1 = spam. Score against the anchors, not against the other email.
+   Baseline floor: if the generic email scores ≤2 on reply likelihood, it
+   failed the strawman bar — the comparison is VOID; rewrite the generic
+   email and re-run the critique rather than banking a hollow win.
    Personalized is allowed to lose. If the generic email's reply likelihood
    is equal or higher, say so plainly. Only after scoring, reveal which
    label was which. State the verdict using reply likelihood as the
@@ -128,9 +171,11 @@ offer in both emails.
    reasoning, not the primary claim.
 7. Write `demo/output/<company-slug>.md` incrementally, not at the end.
    Every write ENDS by appending a `Status: in progress (through step N)`
-   line — the LAST line of the file is always its current state, and the
-   final append (after step 8) is `Status: complete`, so a partial
-   artifact can never be mistaken for a finished one. Create the
+   line, and earlier status lines STAY in place — they are the write log,
+   the proof the file was built incrementally. The LAST line of the file
+   is always its current state; the final append (after the step-9 ledger)
+   is `Status: complete`, so a partial artifact can never be mistaken for
+   a finished one. Create the
    file IMMEDIATELY after step 1 with the status line and the retrieval so
    far (each source marked **live** or **cached**, with dates) — the
    artifact must exist within seconds, before any reasoning; extend it
@@ -151,20 +196,52 @@ offer in both emails.
      personalize (high evidence, positive lift) · light personalization
      (medium evidence or thin lift) · don't spend research time here, use
      the strong generic (low evidence — that answer is itself the value).
+   - **Next probe:** one sentence — the single cheapest check that would
+     most raise evidence confidence, drawn from the hypothesis's "Missing"
+     bullets (e.g. "check their changelog for team-features velocity").
+     This is what makes "go light" and "don't personalize" actionable
+     rather than dead ends.
    - **Winning angle:** one sentence naming the angle that won, or why
      none did.
    - **Reusable hypothesis:** one sentence suggesting what could be TESTED
      across similar prospects — phrased as a hypothesis to test, never as
      a validated cross-account pattern; one account cannot support a
-     pattern claim.
-9. ONLY if the prompt explicitly asked for a page/HTML rendering — never
-   otherwise, and never before the markdown is complete: render the same
-   content as a small self-contained `demo/output/<company-slug>.html`
-   (inline styles, zero external assets) — GTM signal block on top, then
-   the score table, both emails, and the evidence chain with sources. The
-   markdown IS the deliverable; the page is presentation, produced off the
-   judged path.
-10. Print the output path(s) and the one-sentence verdict.
+     pattern claim, and the hypothesis may contain NO numbers that are not
+     in the evidence — an invented multiplier ("2x better reply rates") is
+     fabrication wearing a hypothesis's clothes.
+9. Append the **Run ledger** — the accountability appendix. Every row is
+   an attestation WITH its evidence inline, so any drift is visible in the
+   artifact itself rather than living in the agent's intentions. Compact —
+   one line per row:
+   - **Offer:** given in input / derived from role before any fetch —
+     quote it.
+   - **Fetches:** every attempt as `URL → live | cached | failed` (one
+     attempt each); then the step-3 search: run or skipped, with the
+     usable-evidence count that decided it.
+   - **Evidence count:** N items (the cap is 3 — more is treatment
+     inflation, not thoroughness; trim to the 3 strongest).
+   - **Slots:** slug, letter count, parity, assignment (restates step 6).
+   - **Hypothesis lock:** the written problem hypothesis; then "both
+     emails address it: yes/no".
+   - **Structure:** four parts present in order in both emails; word
+     count of each (must be ≤120); subjects ≤6 words.
+   - **Style scrub:** counted on both emails — em dashes: 0 · comma-only
+     triples (no "and"): 0 · stacked parallel clauses: 0 · banned words:
+     0 · negative parallelism: 0 · empty intensifiers: 0. Any nonzero
+     means rewrite BEFORE the critique, then re-count; a critique run on
+     unscrubbed emails is invalid.
+   - **Fact audit:** every company-specific claim in the personalized
+     email → the evidence item number that backs it. A claim with no row
+     is a defect: delete the claim from the email, or the run is invalid.
+   - **Critic context:** exactly what the critic pass received.
+10. ONLY if the prompt explicitly asked for a page/HTML rendering — never
+    otherwise, and never before the markdown is complete: render the same
+    content as a small self-contained `demo/output/<company-slug>.html`
+    (inline styles, zero external assets) — GTM signal block on top, then
+    the score table, both emails, and the evidence chain with sources. The
+    markdown IS the deliverable; the page is presentation, produced off
+    the judged path.
+11. Print the output path(s) and the one-sentence verdict.
 
 ## Rules
 
@@ -184,8 +261,11 @@ offer in both emails.
 line, and contains: a sourced evidence list, a buyer hypothesis that
 distinguishes role priors from company evidence, a "Why this account"
 sentence, ONE written problem hypothesis that both emails demonstrably
-address, both emails, a blind critique of each with the slot arithmetic
-shown, a verdict — win, loss, or tie — decided on reply likelihood and
-explained honestly, and a GTM signal block ending in a recommended-effort
-decision and a reusable hypothesis. The HTML rendering happens only on
-explicit request, never on the judged path.
+address, both emails passing the craft bar, a blind critique of each with
+anchored scores and the slot arithmetic shown, a verdict — win, loss, or
+tie — decided on reply likelihood and explained honestly (VOID if the
+generic baseline scored ≤2), a GTM signal block ending in a
+recommended-effort decision, a next probe, and a reusable hypothesis, and
+the Run ledger with every attestation filled, including a complete fact
+audit and a style scrub showing all zero counts. The HTML rendering
+happens only on explicit request, never on the judged path.

@@ -35,9 +35,10 @@ role, never a named real person.
    first fetch (a `Status:` line + retrieval sources), then growing —
    evidence list, buyer hypothesis, "Why this account", both email drafts,
    the blind critique, a verdict on reply likelihood (win, loss, or tie),
-   and the closing **GTM signal** block ending in a recommended-effort
-   decision. The file's LAST line is its current state; `Status: complete`
-   there marks the finished artifact.
+   the closing **GTM signal** block ending in a recommended-effort
+   decision, and the **Run ledger** appendix attesting every invariant.
+   The file's LAST line is its current state; `Status: complete` there
+   marks the finished artifact.
 4. If the file has not appeared after 60 seconds, open the fallback — the
    one-page rendering [`demo/output/plausible.html`](demo/output/plausible.html)
    for the screen, [`demo/output/plausible.md`](demo/output/plausible.md) for
@@ -57,19 +58,26 @@ is shaped so runs across many accounts aggregate into message-testing data.
 **Evidence:** Source URL and retrieval date on every fetched page; every
 claim in the evidence list traces to a specific sourced sentence
 (auditability, subscription-funded business model, self-serve pricing).
+The **Run ledger** at the end attests every invariant with its evidence
+inline — offer provenance, one-attempt fetches, slot arithmetic, and a
+fact audit mapping every personalized claim to its evidence item — so
+trust is an inspectable chain, not a promise.
 
-**Fallback output was produced:** 2026-08-28, ahead of the event, via Claude
-Code, by genuinely running the skill against the live plausible.io homepage
-and comparison page — not fabricated, not a template fill-in. Rewritten once
-after external review found the first generic baseline was a strawman; the
-skill's steps were tightened again later that day (see `demo/evals.md` run
-context), with a live re-run planned at the venue.
+**Fallback output was produced:** 2026-08-28 ~19:05–19:15, during the event
+build window, by a fresh Claude Code agent running this skill cold from a
+sandbox copy — only the seed prompt provided. Homepage fetched live;
+comparison page from the committed snapshot, marked honestly. Full Run
+ledger, style bar enforced, and one correction round recorded inside the
+artifact: the agent's first style scrub attested falsely, was caught by an
+external count, and the agent fixed its own emails and logged the catch.
+Not fabricated, not curated by hand. A Codex re-run at the venue replaces
+it if time allows.
 
 ## Evals — 10 seconds
 
 | Case | Result | Where |
 | --- | --- | --- |
-| Intended | Pass — personalized won on reply likelihood, 4/5 vs. generic 3/5, against a genuinely competent generic competitor, not a strawman | [`demo/evals.md`](demo/evals.md) |
+| Intended | Pass — run cold by a fresh agent: personalized won on reply likelihood 4/5 vs. 3/5 against a baseline that passed the strawman bar, with the full Run ledger attested (slot arithmetic shown, hypothesis lock checked, every personalized claim mapped to evidence) | [`demo/evals.md`](demo/evals.md) |
 | Insufficient evidence | Pass — real unreachable URL genuinely produced a DNS failure; skill's written behavior stops and reports rather than inventing a company | [`demo/evals.md`](demo/evals.md) |
 | Failure / exclusion | Pass — skill's input contract and rules reject a named-individual request; it never touches personal data | [`demo/evals.md`](demo/evals.md) |
 
