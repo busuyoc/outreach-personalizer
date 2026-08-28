@@ -33,7 +33,9 @@ quietly personalized — state it explicitly in the output, and use that same
 offer in both emails.
 **Offer claim lock** — written down BEFORE fetching any company evidence:
 exactly what the seller is allowed to claim. Only capabilities, outcomes,
-proof points, integrations, or positioning explicitly supplied in the input.
+proof points, integrations, or positioning contained in the given or
+explicitly derived locked offer, plus any seller capabilities or proof
+points the user supplied.
 Do not infer seller capabilities from the category: if the input says only
 "We help teams automate their GTM workflows with AI agents", that sentence
 is the ENTIRE allowed claim set — "account research", "outreach sequencing",
@@ -46,16 +48,16 @@ beyond them.
 ## Steps
 
 1. Fetch the company's homepage — one attempt, never retry. Record the exact
-   URL and today's date as the retrieval date. If the fetch fails or is slow
-   (~15s), fall back to the cached snapshot in `demo/input/` for this company
+   URL and today's date as the retrieval date. If the fetch fails or
+   stalls, fall back to the cached snapshot in `demo/input/` for this company
    if one exists, and say so explicitly — never describe cached content as
    live. If there is no live fetch and no cached snapshot, report
    "insufficient evidence: could not reach `<url>`" and stop.
 2. One homepage is thin. Fetch exactly one more page, directly linked from
    the homepage: take the highest-priority category present — comparison,
    then pricing, then product/use-case, then about — and within that
-   category the first directly linked URL in document order (~10s budget,
-   one attempt, never retry). Fetch it only if it plausibly adds at least
+   category the first directly linked URL in document order (one attempt,
+   never retry). Fetch it only if it plausibly adds at least
    one of: pricing, comparison language, a quantified outcome, or a
    concrete positioning statement not already on the homepage. Record its
    URL and retrieval date. If nothing qualifies or the fetch fails,
@@ -110,15 +112,24 @@ beyond them.
    able to say: interesting company, weak reason to pitch this. Do not
    invent facts not present in the sources.
 5. First write down THE problem hypothesis: one role-level sentence that
-   BOTH emails must address, printed in the output above the emails.
+   BOTH emails must address, printed in the output above the emails. It
+   must be derivable from the buyer role + locked offer ALONE, and must
+   remain valid if the company evidence were hidden — evidence may change
+   only the personalized framing, never the underlying problem; a
+   hypothesis that quietly encodes company facts contaminates the generic
+   baseline.
    **Branch on offer fit.** If offer fit is LOW: still write the strong
    generic baseline, but do not force a prospect-specific problem claim —
    the personalized version may reference one factual company Observed
-   ONLY if it can do so without asserting an unsupported need; if no
+   ONLY if it can do so without asserting an unsupported need. If no
    responsible bridge exists, write exactly "Personalized test withheld:
-   no grounded bridge to the offer." and skip the A/B — do not manufacture
-   a lift score; the account action becomes probe-first or deprioritize.
-   If offer fit is MEDIUM or HIGH: run the normal controlled comparison.
+   no grounded bridge to the offer.", skip the rest of this step's
+   personalized instructions AND skip step 6 entirely — no slots, no
+   critique, no lift score; the account action becomes probe-first or
+   deprioritize, and in the ledger Slots, Provenance audit and Critic
+   context read "N/A — personalized test withheld" (the scrub then covers
+   the generic email alone). If offer fit is MEDIUM or HIGH: run the
+   normal controlled comparison.
    Then write the two emails, each under 120 words, with the same
    invariant structure — hook → that problem hypothesis → offer/value →
    low-commitment CTA, in that order — the same offer, and the same CTA:
@@ -176,25 +187,30 @@ beyond them.
    The rest of the artifact (hypothesis, verdict, signal) avoids the
    banned words too, without the hard counts. The personalized subject may
    draw on the same 1–2 evidence facts, nothing more.
-6. Blind critic pass — a separate evaluation pass with the email identities
-   withheld. Precision about what "blind" means here, and say it this way
-   in the output: blind to generation intent and to which email was meant
-   to win; NOT blind to treatment identity (the critic can infer which
-   email is personalized from its content) and not an independent model. The
-   critic's context contains only the evidence list, the buyer role, the
-   locked offer claims, the written problem hypothesis (it is an
-   experimental control — the critic needs it for the pre-score check),
-   and both finished emails labeled "Email A" / "Email B" — not the
-   step-4 hypothesis bullets, not the generation rationale, and not the
-   slot-assignment rule below. Assign the slots mechanically, not by
+   **Preflight, BEFORE the critique:** check the hypothesis lock, the
+   offer claim lock, the provenance rule, placeholders, word limits and
+   the four-part structure. Repair ONCE, then FREEZE both emails — from
+   here on nothing rewrites them, the critique included.
+6. Blind critic pass — skipped entirely on the withheld branch. A separate
+   evaluation pass with the email identities withheld. Precision about
+   what "blind" means here, and say it this way in the output: blind to
+   generation intent and to which email was meant to win; NOT blind to
+   treatment identity (the critic can infer which email is personalized
+   from its content) and not an independent model. For this pass, evaluate
+   using ONLY: the evidence list, the buyer role, the locked offer claims,
+   the written problem hypothesis (an experimental control — needed for
+   the pre-score check), and both finished emails labeled "Email A" /
+   "Email B" — not the step-4 hypothesis bullets, not the generation
+   rationale, and not the slot-assignment rule below. Assign the slots mechanically, not by
    choice: count the letters in the company slug — even, generic is A;
    odd, personalized is A — so the generator never picks which email gets
    the favorable position. SHOW the arithmetic in the output ("slug
    `plausible` = 9 letters, odd → personalized is A"); an assignment that
    isn't shown wasn't computed. Before scoring, confirm both emails
    address the written problem hypothesis from step 5 — if one swapped in
-   a different problem, stop and rewrite that email: a "win" produced by
-   changing the problem is an invalid comparison, not a lift. Every score
+   a different problem, the comparison is VOID (the emails are frozen;
+   preflight was the repair window): a "win" produced by changing the
+   problem is invalid, not a lift. Every score
    must quote a VERBATIM substring of the email or the evidence list that
    justifies it — a paraphrase is not a quote; this is an audit hook, not
    a proof of rigor. Open each email's critique by quoting that email's
@@ -218,8 +234,9 @@ beyond them.
    email may score 1–2 when its company-specific bridge is fabricated.
    Score against the anchors, not against the other email.
    Baseline floor: if the generic email scores ≤2 on reply likelihood, it
-   failed the strawman bar — the comparison is VOID; rewrite the generic
-   email and re-run the critique rather than banking a hollow win.
+   failed the strawman bar — the comparison is VOID; record the void
+   honestly and move on. The emails are frozen after preflight: no
+   regeneration, no critique re-run.
    Personalized is allowed to lose. If the generic email's reply likelihood
    is equal or higher, say so plainly. Only after scoring, reveal the
    mapping EXPLICITLY, quoting subjects: "Email A = personalized —
@@ -241,7 +258,7 @@ beyond them.
    **cached**, with dates) — the artifact must exist within seconds,
    before any reasoning; extend it
    after step 4 with the offer being tested, the evidence list, the buyer
-   hypothesis bullets, and the **Why this account** sentence; append both
+   hypothesis bullets, and the **Offer-account bridge** sentence; append both
    emails after step 5 — labeled by ROLE ("Generic email (baseline)" /
    "Personalized email"), NEVER as "Email A/B"; the letters belong to the
    critique's blind slots alone; append the blind critique, the reveal, and the
@@ -298,8 +315,10 @@ beyond them.
      word counts (≤120) · subjects (≤6 words) · counted zeros on both
      emails: em dashes · comma-only triples (no "and") · stacked parallel
      clauses · banned words · negative parallelism · empty intensifiers ·
-     placeholder tokens. Any nonzero means rewrite BEFORE the critique,
-     then re-count; a critique run on unscrubbed emails is invalid.
+     placeholder tokens. Counts are confirmed at the step-5 preflight; a
+     nonzero discovered after the freeze is recorded here as a defect,
+     honestly — never silently fixed. On the withheld branch the scrub
+     covers the generic email alone.
    - **Critic context:** one line — exactly what the critic pass received.
 10. ONLY if the prompt explicitly asked for a page/HTML rendering — never
     otherwise, and never before the markdown is complete: render the same

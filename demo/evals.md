@@ -141,6 +141,21 @@ failing; explain it in the notes.
   unchanged skill — high evidence + high fit → personalize · good
   evidence + low fit → probe/deprioritize · thin evidence → generic; three
   different decisions from one skill is the strongest proof of signal.
+- **Round 9 (~20:10) — five final fixes, then FROZEN:** (1) the withheld
+  branch is now real control flow — skip step 6 entirely, ledger rows
+  marked "N/A — personalized test withheld", scrub covers the generic
+  alone; (2) the problem hypothesis carries a counterfactual test — must
+  remain valid with the company evidence hidden, so the generic baseline
+  can't be quietly personalized; (3) one **preflight** before the
+  critique — repair once, FREEZE both emails, the critique never
+  rewrites, VOID is terminal (no regenerate-and-rerun loops under the
+  75s ceiling); (4) the claim lock covers given OR explicitly derived
+  offers; (5) the last "Why this account" reference renamed to
+  Offer-account bridge. Cleanups: "for this pass, evaluate using only…"
+  (honest about single-context limits) and the pseudo-wall-clock budgets
+  dropped (one-attempt/no-retry is the enforceable rule). **The spec is
+  frozen here** — further specification is likelier to hurt the judged
+  run than help it.
 - **Venue checklist (run in Codex during the build window, then resubmit):**
   1. Intended case — the committed fallback is now a genuine in-window run
      of the CURRENT steps (fresh-agent, live fetches, full ledger). A Codex

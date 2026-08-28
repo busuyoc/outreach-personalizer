@@ -337,6 +337,20 @@ it, the agent can conclude the account isn't justified.* Post-event eval worth r
 three archetypes (high/high → personalize · good/low → probe · thin → generic) — one
 unchanged skill producing three different decisions is the strongest proof of signal.
 
+## Round 9 — five fixes and the freeze (~20:10, keep)
+
+Last review round; the reviewer's own verdict was "fix these, then stop", and the spec is now
+FROZEN. What closed: the withheld branch became executable control flow (skip step 6, N/A
+ledger rows) instead of a promise the later steps contradicted; the problem hypothesis got a
+counterfactual test (must survive hiding the company evidence — otherwise the generic
+baseline is quietly personalized and the whole comparison is contaminated); repair loops were
+replaced by ONE preflight then frozen emails, with VOID as a terminal verdict — cheaper,
+honest, and kinder to the 75-second ceiling than regenerate-and-rerun; the claim lock covers
+derived offers; the last stale field name died. Freeze rationale, worth keeping for every
+future skill: past a certain density, each new rule adds a surface the agent can contradict —
+the marginal specification hurts the run it was meant to protect. Ship the mechanism that
+changes decisions, not the one that proves obedience.
+
 **The A/B (finally run):** same input, same model size. No-skill baseline: fabricated
 reply-rate percentages, fabricated ARR and team-size arithmetic, self-assigned 8/10 priority
 — a confident fabrication engine. Skilled arm: everything traced or tagged, offer fit LOW,
