@@ -297,3 +297,55 @@ become visible); the reusable hypothesis may contain no numbers not present in t
 Meta-lesson worth keeping: the two-instance regen bought more than a fallback — instance
 variance IS the test surface. One instance validates the mechanisms; the second finds the
 failure modes the first happened not to hit.
+
+## Round 7 — offer fit, entailment, and the A/B that proves the skill (~19:30–20:00, keep)
+
+Deepest external critique of the night, judged and mostly adopted. Its core insight: **rich
+company evidence does not imply a reason to pitch THIS offer** — the previous fallback
+manufactured the bridge ("keeping every connection clean and compliant": a seller capability
+present in neither the offer nor the evidence) and invented founder intent. It also caught
+what both the agent's scrub and the master's verification missed: `[Sender]` placeholders
+and inference tails inside evidence items. Redesign shipped: **Offer fit** (low/medium/high,
+rated right after evidence — "rich evidence + low fit = don't manufacture a pitch");
+**Offer-account bridge** with exactly "No strong bridge found." as a first-class outcome;
+**E/H/O/R per-sentence provenance** (Evidence / Hypothesis / Offer-as-given / Role prior; no
+category laundering — entailment, not topical relatedness); de-biographied buyer hypothesis
+(no invented lived experience); recommended effort from **evidence × fit × lift** with
+low-fit wins treated as contamination; ledger consolidated around semantic rows; placeholder
+tokens promoted to a COUNTED zero. Rejected: gutting the style bar (owner mandate; wording
+compressed instead) and the claim that attestations should shrink wholesale — the fix is
+attesting MEANING over procedure.
+
+## Round 8 — the last cut: two decisions, locked claims, withheld tests (~20:05, keep)
+
+Final review round, six surgical changes, all adopted; no regen (clock — the committed
+fallback stays the genuine round-7 artifact, its round-8 gaps named in evals). The essential
+insights: (a) **seller hallucination is the twin of prospect hallucination** — E/H/O/R fixed
+the latter but O blessed invented capabilities ("account research, outreach sequencing,
+qualification"); the fix is an **Offer claim lock** written before any fetch, and O = the
+locked claims only; (b) **account fit and messaging effort are different decisions** — "is
+this account worth pursuing for this offer" vs "how much effort if contacted"; low fit means
+probe-first/deprioritize regardless of an A/B win; (c) the skill may now **withhold the
+personalized test** on a low-fit account instead of manufacturing the experiment — stronger
+than letting personalized lose; (d) structure beats instruction, again: evidence became
+two mechanical fields (Observed/Source) because prose warnings kept leaking inference;
+(e) the reply-likelihood anchors were quietly treatment-biased — "could go unchanged to
+similar companies" defined the REQUIRED property of a generic email as a 3; anchors are now
+treatment-neutral and a fabricated-bridge personalized email can score 1–2. Stage claim that
+survived every round: *without the skill, the agent optimizes for producing an answer; with
+it, the agent can conclude the account isn't justified.* Post-event eval worth running:
+three archetypes (high/high → personalize · good/low → probe · thin → generic) — one
+unchanged skill producing three different decisions is the strongest proof of signal.
+
+**The A/B (finally run):** same input, same model size. No-skill baseline: fabricated
+reply-rate percentages, fabricated ARR and team-size arithmetic, self-assigned 8/10 priority
+— a confident fabrication engine. Skilled arm: everything traced or tagged, offer fit LOW,
+bridge "No strong bridge found.", and the sophisticated result the redesign existed for —
+**personalized wins the message test 4 vs 3 and the skill still recommends staying generic**,
+because the win is recognition-driven, not problem-fit-driven ("Winning angle: None
+validated"). The skill's contribution, provable from the artifacts: not better prose — the
+refusal to fabricate a reason to pitch. Persistent Haiku-floor findings, both corrected by
+the agent on request and recorded in the artifact: the counted placeholder zero was falsely
+attested AGAIN (rule + counter + external check remains the necessary stack), and one
+inference ("word-of-mouth growth") wore an E-tag until retagged H — the homepage states team
+size/founding/bootstrapped, not the growth model. Verified live before adoption.

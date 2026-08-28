@@ -1,20 +1,22 @@
 ---
 name: outreach-personalizer
-description: Given a company URL and a buyer role, fetches the company's real public site, simulates that buyer role's reaction, blind-tests whether evidence-grounded outreach beats a strong generic baseline on simulated reply likelihood, and distills the result into an actionable GTM signal — buyer pain hypothesis, evidence strength, winning message angle. Use when the user names a company or URL and a buyer role and asks for personalized outreach, a pitch, message testing, or GTM signal on a prospect.
+description: Given a company URL and a buyer role, fetches the company's real public site, rates whether the evidence gives a credible reason to pitch this offer at all (offer fit), blind-tests an evidence-grounded email against a strong generic baseline on simulated reply likelihood, and distills an actionable GTM decision — evidence strength, offer fit, recommended effort, winning angle. Use when the user names a company or URL and a buyer role and asks for personalized outreach, a pitch, message testing, account fit, or GTM signal on a prospect.
 ---
 
 # Outreach personalizer
 
-What this skill actually tests: whether an evidence-grounded personalization
-workflow beats a *strong* generic baseline on a simulated reply-likelihood
-signal — not whether personalized beats a deliberately weak strawman, and not
-a general claim that "personalization works." The score is a cheap,
-inspectable ranking signal for deciding what to say to THIS account — not a
-prediction of real reply rates. The deliverable is the GTM signal block at
-the end (pain hypothesis, evidence strength, recommended effort, winning
+What this skill actually tests: ACCOUNT-MESSAGE FIT — whether this company's
+public evidence gives a credible reason to pitch THIS offer, and whether
+grounding the message in that evidence beats a *strong* generic baseline on
+a simulated reply-likelihood signal. Not a strawman contest, and not a
+general claim that "personalization works." Knowing a lot about a company is
+not a reason to pitch it: rich evidence with no bridge to the offer means
+the honest output is "stay generic" — and that answer is product, not
+failure. The score is a cheap, inspectable ranking signal, not a prediction
+of real reply rates. The deliverable is the GTM signal block at the end
+(pain hypothesis, evidence strength, OFFER FIT, recommended effort, winning
 angle, reusable hypothesis), with the emails and the blind scores as its
-audit trail. If the
-generic email is weak, the result proves nothing.
+audit trail. If the generic email is weak, the result proves nothing.
 
 ## Input
 
@@ -29,6 +31,17 @@ to" line is this). If no offer is given, derive one from the buyer role ALONE �
 before fetching or reading any company evidence, so the offer itself is not
 quietly personalized — state it explicitly in the output, and use that same
 offer in both emails.
+**Offer claim lock** — written down BEFORE fetching any company evidence:
+exactly what the seller is allowed to claim. Only capabilities, outcomes,
+proof points, integrations, or positioning explicitly supplied in the input.
+Do not infer seller capabilities from the category: if the input says only
+"We help teams automate their GTM workflows with AI agents", that sentence
+is the ENTIRE allowed claim set — "account research", "outreach sequencing",
+"qualification", "reduces headcount", "compliance-safe", "designed for
+bootstrapped teams" and similar are all unsupported unless the user supplied
+them. The input may optionally list 1–3 seller capabilities or proof points;
+those join the lock. Both emails use the same locked claims and nothing
+beyond them.
 
 ## Steps
 
@@ -55,20 +68,33 @@ offer in both emails.
    anything naming a private individual. With two or more usable items
    already in hand, skip this step entirely — in a timed demo the search is
    the first thing to cut.
-4. Build a short evidence list from what was actually fetched: 2–3 items
-   when the pages support them, honestly fewer when they don't — never
-   lower the specificity bar to hit a count. A usable item is one a
-   reviewer can trace to a concrete sourced statement ("they are a SaaS
-   company" is not one), and it states what the page SAYS — any "this
-   signals/suggests…" reading is inference and belongs in the hypothesis
-   bullets, never in the evidence list. For company-specific claims use ONLY this evidence
-   list — ignore anything already known about this company from training
-   data; a famous company earns its evidence the same way as an unknown
-   one. If the second page was a comparison page, one evidence item should
-   capture the dimension the company differentiates on — that positioning
-   signal is usually the safest personalization hook. Then build a
-   role-grounded buyer hypothesis (this is a hypothesis about a role, not a
-   simulation of a real person) for the offer being pitched (given or
+4. Build an **Evidence List** of at most 3 items (honestly fewer when the
+   pages support fewer — never lower the bar to hit a count). Each item
+   has EXACTLY two fields, and nothing else:
+   - **Observed:** one concrete statement directly supported by the
+     retrieved page. No "suggests", "signals", "implies", "likely", no
+     buyer interpretation, no extrapolation. Boring enough that a reviewer
+     can verify it without agreeing with any reasoning.
+   - **Source:** the exact URL or cached-snapshot reference.
+   Interpretation lives ONLY in the Buyer Hypothesis below. For
+   company-specific claims use ONLY this list — ignore anything already
+   known about this company from training data; a famous company earns its
+   evidence the same way as an unknown one. If the second page was a
+   comparison page, one Observed should capture the dimension the company
+   differentiates on.
+   Then rate **Offer fit**, independently from evidence strength:
+   high = retrieved evidence directly exposes a problem, goal, or
+   constraint the LOCKED offer addresses · medium = ONE credible
+   evidence-backed inference connects the company situation to the locked
+   offer · low = the company is well understood, but no retrieved evidence
+   establishes a meaningful reason this offer should matter to it. Offer
+   fit answers "why pitch THIS offer to THIS account?", not "can I
+   personalize an email?". If offer fit is LOW, do not turn unrelated
+   company facts into a problem merely to create a personalized angle.
+   Then build a role-grounded buyer hypothesis (a hypothesis about a role,
+   not a simulation of a real person, and NOT a biography — never invent
+   lived experience: no "this pain is lived", no imagined incidents the
+   buyer "has been through") for the offer being pitched (given or
    derived — see Input), in compact bullets, keeping three things distinct:
    - **Role prior** (1–2 bullets) — what this kind of buyer typically cares
      about, independent of this company; never counts as company evidence.
@@ -77,15 +103,24 @@ offer in both emails.
    - **Missing** (1–2 bullets) — what you'd want to know but don't.
    An inference may inform the hypothesis, but must never be phrased as a
    known company fact unless the evidence explicitly states it. Close the
-   section with **Why this account** — exactly ONE sentence, hard limit:
-   an evidence-backed hypothesis for why this company's public positioning
-   makes the offer potentially relevant now — "their positioning suggests
-   X may matter", never "they need X". Do not invent facts not present in
-   the sources.
+   section with the **Offer-account bridge** — exactly ONE sentence, hard
+   limit: what evidence connects this account to THIS offer ("their
+   positioning suggests X may matter", never "they need X") — or exactly
+   the sentence "No strong bridge found." A real operator needs the system
+   able to say: interesting company, weak reason to pitch this. Do not
+   invent facts not present in the sources.
 5. First write down THE problem hypothesis: one role-level sentence that
-   BOTH emails must address, printed in the output above the emails. Then
-   write the two emails, each under 120 words, with the same invariant
-   structure — hook → that problem hypothesis → offer/value →
+   BOTH emails must address, printed in the output above the emails.
+   **Branch on offer fit.** If offer fit is LOW: still write the strong
+   generic baseline, but do not force a prospect-specific problem claim —
+   the personalized version may reference one factual company Observed
+   ONLY if it can do so without asserting an unsupported need; if no
+   responsible bridge exists, write exactly "Personalized test withheld:
+   no grounded bridge to the offer." and skip the A/B — do not manufacture
+   a lift score; the account action becomes probe-first or deprioritize.
+   If offer fit is MEDIUM or HIGH: run the normal controlled comparison.
+   Then write the two emails, each under 120 words, with the same
+   invariant structure — hook → that problem hypothesis → offer/value →
    low-commitment CTA, in that order — the same offer, and the same CTA:
    - `generic` FIRST: the strongest generally applicable version for this
      buyer role — a real problem hypothesis, role-relevant language, a
@@ -101,6 +136,19 @@ offer in both emails.
      genuinely supports it. If the evidence is too thin for a strong
      personalized angle, say so in the output rather than manufacturing
      specificity to force a win.
+   Provenance rule for the personalized email — every meaningful claim is
+   supported by exactly one source: **E** (directly entailed by an
+   Evidence List Observed) · **H** (an inference stated explicitly as
+   uncertainty — "may", "could", "suggests", "if") · **O** (directly
+   contained in the LOCKED offer claims from Input — nothing else; a
+   general AI-agent offer does not permit claims about sequencing,
+   qualification, reduced headcount, integrations, ROI, or vertical
+   specialization unless those were locked) · **R** (generic buyer-role
+   knowledge asserting nothing specific about this company). Topical
+   similarity is NOT support: evidence about compliance does not permit
+   the seller to claim its product keeps workflows compliant. If a
+   sentence needs two unsupported bridges to become true, delete it — not
+   defend it.
    Craft + style bar for BOTH emails — the floor that separates a shipped
    email from an AI-flavored one. At this length every rule is absolute
    and countable; the ledger attests the counts:
@@ -134,7 +182,9 @@ offer in both emails.
    to win; NOT blind to treatment identity (the critic can infer which
    email is personalized from its content) and not an independent model. The
    critic's context contains only the evidence list, the buyer role, the
-   offer, and both finished emails labeled "Email A" / "Email B" — not the
+   locked offer claims, the written problem hypothesis (it is an
+   experimental control — the critic needs it for the pre-score check),
+   and both finished emails labeled "Email A" / "Email B" — not the
    step-4 hypothesis bullets, not the generation rationale, and not the
    slot-assignment rule below. Assign the slots mechanically, not by
    choice: count the letters in the company slug — even, generic is A;
@@ -156,12 +206,17 @@ offer in both emails.
      inserted name.
    - **Credibility** — are claims supported by the evidence without
      stretching it?
-   Anchor reply likelihood so scores don't cluster at 3–4: 5 = names a
-   problem this buyer has publicly committed to — replying is the path of
-   least resistance · 4 = specific and credible enough that ignoring it
-   costs the buyer something · 3 = competent; could go unchanged to a
-   dozen similar companies · 2 = template smell or one stretched claim ·
-   1 = spam. Score against the anchors, not against the other email.
+   Anchor reply likelihood with TREATMENT-NEUTRAL anchors — company
+   specificity has its own score and must not be double-counted here:
+   5 = compelling: strong problem–offer fit, credible claims, a clear
+   reason to engage now · 4 = strong: relevant and credible enough to
+   merit consideration, low-friction next step · 3 = competent but easy
+   to ignore; no reason this buyer must engage now · 2 = weak relevance,
+   an unsupported stretch, or template smell · 1 = spam: implausible,
+   misleading, or materially fabricated. A generic email may score 4–5
+   when its problem–offer fit is unusually strong; a highly personalized
+   email may score 1–2 when its company-specific bridge is fabricated.
+   Score against the anchors, not against the other email.
    Baseline floor: if the generic email scores ≤2 on reply likelihood, it
    failed the strawman bar — the comparison is VOID; rewrite the generic
    email and re-run the critique rather than banking a hollow win.
@@ -192,56 +247,60 @@ offer in both emails.
    critique's blind slots alone; append the blind critique, the reveal, and the
    verdict after step 6. A run cut off partway leaves a truthful partial
    artifact on disk.
-8. Close the file with a **GTM signal** block — the decision a growth team
-   can act on beyond this one email:
-   - **Buyer pain hypothesis:** one sentence.
-   - **Evidence strength:** high = 2+ specific, traceable claims that
-     directly support a buyer-relevant angle · medium = 1 strong claim or
-     several weaker relevant ones · low = only generic positioning. One
-     clause on why.
-   - **Personalization lift:** wins / ties / loses on reply likelihood.
-   - **Recommended effort:** derived from the two lines above —
-     personalize (high evidence, positive lift) · light personalization
-     (medium evidence or thin lift) · don't spend research time here, use
-     the strong generic (low evidence — that answer is itself the value).
-   - **Next probe:** one sentence — the single cheapest check that would
-     most raise evidence confidence, drawn from the hypothesis's "Missing"
-     bullets (e.g. "check their changelog for team-features velocity").
-     This is what makes "go light" and "don't personalize" actionable
-     rather than dead ends.
-   - **Winning angle:** one sentence naming the angle that won, or why
-     none did.
+8. Close the file with a **GTM signal** block — TWO decisions, not one:
+   whether this account deserves pursuit for this offer, and separately
+   how much messaging effort it gets if contacted:
+   - **Buyer pain hypothesis:** one sentence, explicitly a hypothesis.
+   - **Evidence strength:** high = 2+ specific, traceable Observed items
+     that directly support a buyer-relevant angle · medium = 1 strong or
+     several weaker · low = only generic positioning. One clause on why.
+   - **Offer fit:** low / medium / high (from step 4), one clause on why.
+   - **Personalization result:** wins / ties / loses / WITHHELD (low-fit
+     branch) on reply likelihood.
+   - **Account action:** pursue / probe first / deprioritize. Low offer
+     fit → probe first or deprioritize, REGARDLESS of a personalization
+     win — a lift built on a manufactured bridge is contamination, not a
+     reason to pursue.
+   - **Messaging effort:** generic / light personalization / personalize —
+     only meaningful if the account is contacted at all.
+   - **Why:** one sentence combining evidence strength, offer fit, and
+     the message result.
+   - **Next probe:** the single cheapest public check that could CHANGE
+     the account action, drawn from the hypothesis's "Missing" bullets.
+   - **Winning angle:** one sentence, or exactly "None validated."
    - **Reusable hypothesis:** one sentence suggesting what could be TESTED
-     across similar prospects — phrased as a hypothesis to test, never as
-     a validated cross-account pattern; one account cannot support a
-     pattern claim, and the hypothesis may contain NO numbers that are not
+     across similar prospects — never stated as a learned pattern; one
+     account cannot support a pattern claim, and NO numbers that are not
      in the evidence — an invented multiplier ("2x better reply rates") is
      fabrication wearing a hypothesis's clothes.
 9. Append the **Run ledger** — the accountability appendix. Every row is
    an attestation WITH its evidence inline, so any drift is visible in the
    artifact itself rather than living in the agent's intentions. Compact —
    one line per row:
-   - **Offer:** given in input / derived from role before any fetch —
-     quote it.
+   - **Offer & claim lock:** given in input / derived from role before
+     any fetch — quote it, and list the locked claim set the emails were
+     allowed to use.
    - **Fetches:** every attempt as `URL → live | cached | failed` (one
      attempt each); then the step-3 search: run or skipped, with the
      usable-evidence count that decided it.
-   - **Evidence count:** N items (the cap is 3 — more is treatment
-     inflation, not thoroughness; trim to the 3 strongest).
+   - **Evidence count & offer fit:** N items (the cap is 3 — more is
+     treatment inflation, not thoroughness) · offer fit with its
+     one-clause reason.
    - **Slots:** slug, letter count, parity, assignment (restates step 6).
    - **Hypothesis lock:** the written problem hypothesis; then "both
      emails address it: yes/no".
-   - **Structure:** four parts present in order in both emails; word
-     count of each (must be ≤120); subjects ≤6 words.
-   - **Style scrub:** counted on both emails — em dashes: 0 · comma-only
-     triples (no "and"): 0 · stacked parallel clauses: 0 · banned words:
-     0 · negative parallelism: 0 · empty intensifiers: 0. Any nonzero
-     means rewrite BEFORE the critique, then re-count; a critique run on
-     unscrubbed emails is invalid.
-   - **Fact audit:** every company-specific claim in the personalized
-     email → the evidence item number that backs it. A claim with no row
-     is a defect: delete the claim from the email, or the run is invalid.
-   - **Critic context:** exactly what the critic pass received.
+   - **Provenance audit:** each meaningful personalized-email sentence
+     tagged E/H/O/R with its backing (E# for evidence items). Entailment,
+     not topical relatedness: "mentions compliance" does not back "we keep
+     connections compliant". Any sentence outside the four categories =
+     delete it from the email, or the run is invalid.
+   - **Style & structure scrub:** four parts in order in both emails ·
+     word counts (≤120) · subjects (≤6 words) · counted zeros on both
+     emails: em dashes · comma-only triples (no "and") · stacked parallel
+     clauses · banned words · negative parallelism · empty intensifiers ·
+     placeholder tokens. Any nonzero means rewrite BEFORE the critique,
+     then re-count; a critique run on unscrubbed emails is invalid.
+   - **Critic context:** one line — exactly what the critic pass received.
 10. ONLY if the prompt explicitly asked for a page/HTML rendering — never
     otherwise, and never before the markdown is complete: render the same
     content as a small self-contained `demo/output/<company-slug>.html`
@@ -266,14 +325,18 @@ offer in both emails.
 ## Done when
 
 `demo/output/<company-slug>.md` ends with `Status: complete` as its last
-line, and contains: a sourced evidence list, a buyer hypothesis that
-distinguishes role priors from company evidence, a "Why this account"
-sentence, ONE written problem hypothesis that both emails demonstrably
-address, both emails passing the craft + style bar, a blind critique of each with
-anchored scores and the slot arithmetic shown, a verdict — win, loss, or
-tie — decided on reply likelihood and explained honestly (VOID if the
-generic baseline scored ≤2), a GTM signal block ending in a
-recommended-effort decision, a next probe, and a reusable hypothesis, and
-the Run ledger with every attestation filled, including a complete fact
-audit and a style scrub showing all zero counts. The HTML rendering
-happens only on explicit request, never on the judged path.
+line, and contains: an Observed/Source evidence list, an offer claim lock,
+an offer-fit rating, a buyer hypothesis that distinguishes role priors
+from company evidence, an Offer-account bridge sentence (or exactly "No
+strong bridge found."), ONE written problem hypothesis, then EITHER the
+controlled comparison — both emails passing the craft + style bar and the
+provenance rule, a blind critique with treatment-neutral anchored scores
+and the slot arithmetic shown, a verdict (win, loss, or tie; VOID if the
+generic baseline scored ≤2) — OR, on the low-fit branch, the generic
+baseline plus "Personalized test withheld: no grounded bridge to the
+offer."; and a GTM signal block ending in TWO decisions (account action ·
+messaging effort) with a why, a next probe, and a reusable hypothesis, and
+the Run ledger with every attestation filled, including the claim lock,
+a complete provenance audit, and a style & structure scrub showing all
+zero counts. The HTML rendering happens only on explicit request, never on
+the judged path.

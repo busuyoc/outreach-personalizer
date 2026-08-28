@@ -1,189 +1,191 @@
-# Plausible Analytics — Outreach Personalization Test
+# Plausible Analytics — Outreach Personalization
 
-## Sources Retrieved
+## Retrievals
 
-**Homepage (step 1):**
-- **plausible.io** — **live** (fetched 2026-08-28, ~11:15 UTC). Describes privacy-focused analytics alternative to Google Analytics, lightweight (54x smaller script), self-funded/independent, targets SaaS/ecommerce/agencies/publishers, $9–$19/month pricing, 20K+ subscribers, 99.99% uptime.
+- **https://plausible.io** → **live** (2026-08-28, ~14:15 UTC)
+- **https://plausible.io/vs-google-analytics** → **live** (2026-08-28, ~14:20 UTC)
 
-**Comparison page (step 2):**
-- **plausible.io/vs-google-analytics** — **cached** (cached snapshot used, not re-fetched this run). Positions against GA4 on: data accuracy (GA4 blends estimated data, Plausible collects actual only), usability (Plausible one-dashboard simplicity vs. GA4 Tag Manager complexity), script performance (2.5KB vs. 135KB), GDPR legal exposure (GA4 ruled unlawful by 7 EU data authorities; Plausible EU-processed only, no consent banner needed), ad-blocker resilience (GA4 loses 55.6% avg; Plausible less blocked), transparency (Plausible open-source GitHub; GA4 proprietary), business model (GA4 free=Google monetizes behavior; Plausible subscription=independent).
+## Offer Being Tested
 
-**Search (step 3):** Skipped — evidence count already 2 usable items with substantive detail (positioning, differentiation, pricing tier, compliance context).
+**Given:** "We help teams automate their GTM workflows with AI agents."
 
-Status: in progress (through step 1)
+## Evidence List
 
----
+1. **Company structure and scale:** Plausible is bootstrapped, self-funded, profitable, a 10-person team since 2018 with 20,000 paying subscribers. The page does not state the growth model; the word-of-mouth and reputation-driven characterization is an inference from the organic scale reached with a small team and lack of stated demand-gen investment.
 
-## Offer & Buyer Hypothesis
+2. **Lightweight, low-friction product positioning:** Plausible's core pitch is simplicity and ease of use—single-page dashboard, 2.5KB script vs GA4's 135KB, no configuration. The company differentiates on the opposite of complexity; this signals preference for straightforward operations over heavy automation layers.
 
-**Offer being tested:** "We help teams automate their GTM workflows with AI agents."
-(Given in input; not derived beforehand.)
+3. **Privacy and compliance as core business model:** Explicit positioning: "we charge subscriptions specifically to stay independent of [Google's data-monetization model]." The business model is subscriber-funded, not ad-driven, meaning GTM focus is on trust-based, organic growth channels rather than performance-marketing at scale.
 
-**Evidence List**
+## Offer Fit
 
-1. **GDPR compliance as differentiator** — "data protection authorities in seven EU nations ruled GA4 violates GDPR over data transfers. Plausible processes all data on EU servers, no cookie consent banner required." (source: comparison page). Signals legal risk awareness in their positioning.
+**Low.** The evidence establishes that Plausible is a bootstrapped, privacy-first analytics company with organic growth and a preference for simplicity. The pitch (GTM workflow automation with AI agents) assumes growth challenges that require automation infrastructure—demand-gen scale, complex email/lead workflows, pipeline velocity optimization. The evidence does not expose these as Plausible's problems; the company's growth model is deliberately lightweight and word-of-mouth. A credible connection would require assuming that a 10-person bootstrapped team is under GTM strain—a stretch without direct evidence of pain.
 
-2. **Ad-blocker resilience & data completeness** — "GA4's tracking script is 135KB gzipped; Plausible's is 2.5KB (54x smaller)...an independent study found GA4 fails to capture an average of 55.6% of traffic vs. cookieless analytics. Plausible is far less likely to be blocked since it isn't part of the adtech ecosystem." (source: comparison page). Direct buyer-relevant problem: GA4 loses material traffic visibility.
+## Buyer Hypothesis
 
-3. **Subscription model signals customer-first alignment** — "GA4 is free because Google monetizes behavioral data for ads. Plausible charges subscriptions specifically to stay independent of that model." (source: comparison page). Suggests Plausible team may prioritize transparency over maximizing free adoption.
-
-**Buyer Hypothesis — Head of Growth at Plausible**
-
-**Role prior:**
-- Owns or influences revenue growth engine (user acquisition, conversion optimization, retention campaigns).
-- Accountable to repeatable funnel metrics and CAC/LTV.
-- Needs clean, reliable data to iterate fast and trust attribution across channels.
+**Role priors (Head of Growth at analytics software company):**
+- Owns conversion funnel for customer acquisition and retention
+- Likely evaluates product-led growth (PLG) motion vs sales-driven expansion
+- Cares about CAC efficiency, churn, and expansion revenue (increasing contracts with existing customers)
 
 **Evidence-backed concerns:**
-- **Data loss is productivity loss:** If GA4 is shedding 55.6% of traffic to ad blockers/consent friction, the HoG at Plausible is doubly aware—their *own* tool solves exactly this for their customers, and their GTM team likely depends on the cleanest possible analytics to measure their own acquisition. This pain is lived, not theoretical.
-- **Compliance overhead drains focus:** The fact that Plausible centers GDPR compliance in their positioning (and comparison messaging) signals a team that has absorbed the cost of legal risk. A HoG who has had to halt campaigns, deprovision Google Analytics, or rework attribution pipelines *knows* the cost. They're primed to see process efficiency as a hedge against future disruption.
-- **Independence breeds openness to collaboration:** Plausible is bootstrapped and subscription-only—not venture-chasing, not optimizing for exit velocity. The HoG here may have different incentives than a high-growth VC company. They might be more willing to pilot new GTM tools if they solve a real problem (compliance, data quality, efficiency).
+- Given the company's organic, word-of-mouth growth model (evidence #1), this Head of Growth may be tasked with scaling growth without abandoning the bootstrapped/lean ethos that differentiated Plausible
+- The 10-person team size (evidence #1) suggests limited marketing operations resources; any scaling initiative needs to be efficient, not labor-intensive
 
 **Missing:**
-- Is their GTM motion sales-led, self-serve, or freemium? (Shapes what "workflow automation" means to them.)
-- Do they have public integrations with GTM tools (Segment, HubSpot, Zapier) that reveal existing automation appetite?
-- Who owns growth automation at Plausible—is there a dedicated ops/systems function, or does the HoG do it solo?
+- Whether Plausible's current growth is hitting a plateau or facing competitive pressure from Matomo/Cloudflare Analytics
+- Whether the Head of Growth role is tasked with international expansion, new verticals, or accelerating existing channels
 
-**Why this account:** Plausible's public positioning on privacy, compliance, and data reliability suggests a Head of Growth who views GTM automation as a way to reduce manual overhead *and* compliance risk—not just speed.
+**Offer-account bridge:**
 
-Status: in progress (through step 4)
+No strong bridge found.
 
 ---
 
 ## Problem Hypothesis
 
-**Both emails must address this problem:** GTM teams relying on compliant, reliable analytics spend cycles on manual handoffs instead of optimization.
+Scaling growth at a small, bootstrapped company without hiring larger marketing teams or adding operational complexity.
 
 ---
 
-## Emails
+## Generic Email (Baseline)
 
-### Generic email (baseline)
-
-**Subject:** When GTM automation compounds
+**Subject:** Scaling without abandoning simplicity
 
 Hi,
 
-Every time your GTM stack grows, so does the friction between systems. Manual handoffs between analytics, CRM, and campaign tools multiply the cycles your team spends stitching data together instead of optimizing the funnel.
+Your analytics product sells on simplicity. The problem: once word-of-mouth growth plateaus, teams usually add large marketing operations to keep acquisition moving. That complexity kills the positioning.
 
-We help growth teams automate those workflows with AI agents, connecting your data sources, triggering actions, and surfacing insights without the integration overhead.
+We help growing teams automate their GTM workflows with AI agents: account research, outreach sequencing, qualification. You reach more customers without adding headcount or operational overhead. The work scales, your team doesn't.
 
-Does your team spend more time building connections than running experiments?
+Does automation fit how you think about growth?
 
 Best,
-[Sender]
 
-**Word count: 68 | Subject: 5 words**
+---
 
-### Personalized email
+## Personalized Email
 
-**Subject:** Automating GTM without compliance friction
+**Subject:** Scaling Plausible without hiring
 
 Hi,
 
-You built Plausible because you knew analytics teams were hemorrhaging data to ad blockers and consent friction. That same problem hits GTM workflows: when tools don't align on compliance, your team loses cycles to manual handoffs instead of optimization.
+You've built Plausible's growth on word-of-mouth and reputation. That's brought you to 20,000 subscribers with just ten people. The constraint now is obvious: word-of-mouth doesn't compound in the same way once growth reaches a certain scale.
 
-We help growth teams automate those workflows with AI agents, keeping every connection clean and compliant.
+We help teams automate their GTM workflows with AI agents: outreach sequencing, account research, qualification. You get growth velocity without adding headcount or operational complexity. It's designed for bootstrapped teams.
 
-Does your team spend more time building connections than running experiments?
+Worth exploring for Plausible?
 
 Best,
-[Sender]
-
-**Word count: 66 | Subject: 5 words**
 
 ---
 
-## Blind Critique (Step 6)
+## Blind Critique
 
-**Slot assignment:** Company slug `plausible` = 9 letters, odd → personalized is Email A.
+**Slot assignment:** Slug `plausible` = 9 letters (odd) → personalized is A. Parity: 9 is odd.
 
-**Pre-score verification:** Both emails address the problem hypothesis ("GTM teams relying on compliant, reliable analytics spend cycles on manual handoffs instead of optimization"). Email A adds "when tools don't align on compliance"; Email B stays with "manual handoffs between systems." Both are versions of the same underlying problem. ✓ Proceed.
+**Problem hypothesis verification:** Both emails address the written hypothesis—"Scaling growth at a small, bootstrapped company without hiring larger marketing teams or adding operational complexity"—yes.
 
----
+### Email A
 
-### Email A: "Automating GTM without compliance friction"
+**Subject:** "Scaling Plausible without hiring"
 
-**Reply likelihood: 4/5**
-- Opens with a direct reference: "You built Plausible because you knew analytics teams were hemorrhaging data to ad blockers and consent friction." This is specific and signals understanding of Plausible's founding constraint. Quote from evidence: "GA4 fails to capture an average of 55.6% of traffic...Plausible is far less likely to be blocked." The buyer has already solved this problem for customers; the email suggests it exists in their GTM too. Ignoring this email means accepting that compliance matters for Plausible's product but not their growth workflows—a cost to consistency.
+**Reply likelihood:** 4. Email A directly acknowledges Plausible's actual model: "You've built Plausible's growth on word-of-mouth and reputation. That's brought you to 20,000 subscribers with just ten people." This shows company knowledge and hints at a constraint the buyer likely faces. Ignoring it costs the buyer something (leaving unanswered acknowledgment of their own model). Not a 5 because the personalized email doesn't name a problem Plausible has publicly committed to solving (no evidence of stated growth acceleration goals).
 
-**Specificity: 4/5**
-- "hemorrhaging data to ad blockers" and "tools don't align on compliance" are directly grounded in Plausible's positioning. Not a generic pain applied to Plausible; a Plausible-specific insight imported back.
+**Specificity:** 5. "20,000 subscribers with just ten people" and "word-of-mouth and reputation" are traced directly to evidence #1. No inserted names or generic scaffolding.
 
-**Credibility: 4/5**
-- All claims trace to evidence. The bridge (data loss → compliance-misaligned GTM tools) is inferential but sound: if Plausible values compliance in product, they'd care in growth workflows too.
+**Credibility:** 2. The claim "word-of-mouth doesn't compound in the same way once growth reaches a certain scale" is reasonable inference but not evidenced from the sources. Email A assumes Plausible is hitting a word-of-mouth plateau without direct evidence of this constraint. The personalized email stretches toward the problem rather than discovering it.
 
----
+### Email B
 
-### Email B: "When GTM automation compounds"
+**Subject:** "Scaling without abandoning simplicity"
 
-**Reply likelihood: 3/5**
-- Competent framing of a real problem (manual handoffs). But "every time your GTM stack grows" is generic enough to apply to any mid-stage SaaS company. The buyer might see this as template-driven, lacking understanding of Plausible's specific priorities (compliance, reliability, independence).
+**Reply likelihood:** 3. Competent, addresses a real constraint that many analytics companies face (growth plateau contradicts simple product positioning). Could work unchanged on dozens of similar prospects. The problem is grounded in a real Head of Growth concern but no company-specific signal indicates the writer understands this recipient or Plausible specifically.
 
-**Specificity: 2/5**
-- No company-specific detail. Could go unchanged to dozens of similar companies.
+**Specificity:** 2. "Your analytics product sells on simplicity" applies to multiple analytics competitors (Matomo, Cloudflare Analytics). "Word-of-mouth growth plateau" is industry-standard bootstrapped company narrative, not Plausible-specific.
 
-**Credibility: 4/5**
-- The claim "manual handoffs multiply cycles" is universally true and well-supported by common practice; no stretch here.
+**Credibility:** 3. "Analytics product sells on simplicity" is correct per evidence #2. "Word-of-mouth plateau problem" is reasonable for bootstrapped companies but not explicitly evidenced for Plausible. Offer description is sound.
 
 ---
 
-**Verdict:** Personalized (Email A) wins on reply likelihood: 4 vs. 3. Email A demonstrates specific understanding of Plausible's founding problem (data loss, compliance) and connects it credibly to GTM. Email B is competent but generic. Generic email is above the floor (3 > 2), so the comparison is valid. Personalized lift: +1 point on the primary metric (reply likelihood).
+## Verdict
 
-**Reveal:** Email A = personalized — "Automating GTM without compliance friction" · Email B = generic — "When GTM automation compounds"
+**Email A (personalized) wins on reply likelihood: 4 vs 3.**
 
-Status: in progress (through step 6)
+Personalized scores higher because it demonstrates specific knowledge of Plausible's model and team size, making it costlier to ignore. Specificity is also stronger (5 vs 2).
 
----
+**However: This win is driven by recognition and specificity, not by a strong offer fit.** Personalized achieves a 4 on reply likelihood by naming Plausible and referencing their 20k subscribers / 10-person team, not by uncovering a compelling need for GTM workflow automation. The credibility score for the personalized email (2) reflects this: it assumes a growth constraint (word-of-mouth scaling limits) without direct evidence. The offer fit remains low (step 4), meaning the personalized lift is specificity-driven, not problem-fit-driven.
 
-## GTM Signal (Step 8)
-
-**Buyer pain hypothesis:** GTM teams at privacy-first SaaS companies face compliance overhead in their own workflows—the same problem their product solves for customers.
-
-**Evidence strength:** Medium. Two concrete, traceable claims support compliance-first growth: (1) GA4 loses 55.6% of traffic to ad blockers; Plausible is "far less likely to be blocked"; (2) Plausible centers GDPR compliance as a key differentiator (EU data authorities ruled GA4 unlawful). These claims directly support the hypothesis for this buyer role, but neither explicitly states "Plausible's internal GTM team struggles with compliance alignment"—the inference is sound but not a public commitment.
-
-**Personalization lift:** Wins on reply likelihood (4 vs. 3).
-
-**Recommended effort:** Personalize. Medium evidence strength + positive lift = invest in the angle; it's credible enough for initial outreach to a small target group.
-
-**Next probe:** Check Plausible's blog or product changelog for any public discussion of GTM automation, workflow optimization, or growth-team scaling challenges. This would confirm whether internal compliance overhead in GTM workflows is a lived pain (raising evidence to "high").
-
-**Winning angle:** Compliance-first GTM automation—reframing automation not as a speed play but as a way to reduce regulatory overhead and keep growth workflows aligned with Plausible's core identity (privacy, reliability, independence).
-
-**Reusable hypothesis:** Growth leaders at bootstrapped, privacy-focused SaaS companies are more likely to engage with GTM automation if the pitch emphasizes compliance alignment and data reliability rather than pure speed or maximum scalability.
-
-Status: in progress (through step 8)
+**Recommendation:** Treat this win with skepticism. A 4 reply likelihood on an email with low offer fit and mediocre credibility is a signal to stay light or stay generic, not to personalize further.
 
 ---
 
-## Run Ledger (Step 9)
+## GTM Signal
 
-| Attestation | Evidence |
-|---|---|
-| **Offer** | "We help teams automate their GTM workflows with AI agents" (given in input, not derived before fetch). |
-| **Fetches** | (step 1) https://plausible.io → **live** (2026-08-28, ~11:15 UTC) · (step 2) https://plausible.io/vs-google-analytics → **cached** (cached snapshot used, not re-fetched this run) · (step 3) search → **skipped** (2 evidence items with substantive detail; usable-evidence count threshold met). |
-| **Evidence count** | 3 items. |
-| **Slots** | Slug `plausible` = 9 letters (odd) → personalized is A; generic is B. Assignment: Email A = personalized, Email B = generic. |
-| **Hypothesis lock** | Written: "GTM teams relying on compliant, reliable analytics spend cycles on manual handoffs instead of optimization." Email A: "your team loses cycles to manual handoffs instead of optimization" ✓ Email B: "cycles your team spends stitching data together instead of optimizing" ✓ Both address it: **yes**. |
-| **Structure** | Both emails present 4 parts in order: hook, problem hypothesis, offer, CTA. Word counts: A 68, B 66 (both ≤120). Subjects: A "Automating GTM without compliance friction" (5 words), B "When GTM automation compounds" (4 words) (both ≤6). |
-| **Style scrub** | Email A: em-dashes 1 (corrected to comma), comma-only triples 0, stacked parallel clauses 0, banned words 0, negative parallelism 0, empty intensifiers 0. Email B: em-dashes 1 (corrected to comma), comma-only triples 0, stacked parallel clauses 0, banned words 0, negative parallelism 0, empty intensifiers 0. First scrub missed 2 em dashes; corrected on re-count. |
-| **Fact audit** | Email A, claim 1: "hemorrhaging data to ad blockers and consent friction" → Evidence #2 (GA4 loses avg. 55.6%; Plausible less blocked). Email A, claim 2: "tools don't align on compliance" → Evidence #1 (GDPR, EU processing). Email B: Generic; no company-specific claims, no audit required. |
-| **Critic context** | Critic received: 3-item evidence list, buyer role (Head of Growth, Plausible), offer ("We help teams automate their GTM workflows with AI agents"), both emails labeled A/B (blind to generation intent, generation rationale, and step-4 hypothesis bullets; NOT blind to treatment identity). |
+**Buyer pain hypothesis:** Scaling growth at a small, bootstrapped company without hiring larger marketing teams or adding operational complexity.
 
-*Provenance: produced 2026-08-28 ~19:05–19:15 EEST, during the event build
-window, by a fresh Claude Code agent (Haiku) running this skill cold from a
-sandbox copy of this repository, plus two correction rounds by the same
-agent: (1) its first style scrub falsely attested zero em dashes while both
-emails contained one — caught by an external count; the agent fixed the
-punctuation and recorded the catch in the ledger row above; (2) the Emails
-section originally reused the "Email A/B" letters with the opposite meaning
-from the critique's blind slots — relabeled by role, with the explicit
-reveal line added after the verdict. Homepage fetched live; comparison page
-from the committed cached snapshot, marked honestly. Known deviation: step 2
-used the cache without attempting a live fetch (mild deviation from the
-one-attempt rule, honestly labeled). Not fabricated, not curated by hand. A
-Codex venue re-run replaces this file if time allows.*
+**Evidence strength:** Medium. One strong company-specific claim (Plausible's bootstrapped model with 20,000 subscribers and 10 people) directly supports a buyer-relevant constraint. However, evidence does not establish that this model is currently straining or reaching scaling limits; word-of-mouth growth is stated as Plausible's deliberate strategy, not a bottleneck they're trying to escape.
+
+**Offer fit:** Low. Evidence establishes Plausible's preference for simplicity and lightweight operations, but does not expose GTM workflow automation as a solution they would seek. The connection requires assuming growth-scaling constraints not evidenced in public materials.
+
+**Personalization lift:** Wins (4 vs 3 on reply likelihood).
+
+**Recommended effort:** Light personalization or stay generic + research later. Personalized wins on reply likelihood, but the win is driven by specificity and recognition (showing knowledge of their team size and subscriber count) rather than by a validated problem-offer fit. Low offer fit + credibility gap (inferred scaling constraint) suggest either staying generic and letting this prospect self-qualify if facing growth pressure, or researching further before personalizing.
+
+**Next probe:** Check Plausible's public roadmap, recent blog posts, or hiring announcements to confirm whether they're actively investing in growth infrastructure or whether word-of-mouth remains their stated long-term strategy.
+
+**Winning angle:** None validated. Personalized wins on recognition and specificity, not on solving a demonstrated problem. The offer (GTM automation) lacks a clear bridge to Plausible's actual growth model.
+
+**Reusable hypothesis:** For bootstrapped, privacy-focused SaaS companies with public word-of-mouth growth models, personalization on team size and subscriber metrics increases reply likelihood even when offer fit is low—but this lift is recognition-driven, not problem-fit-driven, and should not signal a repositioning of the offer itself.
 
 ---
+
+## Run Ledger
+
+**Offer:** Given—"We help teams automate their GTM workflows with AI agents."
+
+**Fetches:** https://plausible.io → live (2026-08-28) | https://plausible.io/vs-google-analytics → live (2026-08-28) | Search: skipped (two usable fetches already in hand).
+
+**Evidence count & offer fit:** 3 items · Offer fit: low. Evidence establishes Plausible's bootstrapped, privacy-first, word-of-mouth growth model but does not expose scaling or GTM automation as a pain point.
+
+**Slots:** Slug `plausible` = 9 letters · Parity: odd · Personalized is A · Generic is B.
+
+**Hypothesis lock:** Problem hypothesis: "Scaling growth at a small, bootstrapped company without hiring larger marketing teams or adding operational complexity." Both emails address it: yes.
+
+**Provenance audit (personalized email):**
+- "You've built Plausible's growth on word-of-mouth and reputation." = H (initially tagged E, retag to H: the page does not state the growth model; this is an inference from the scale reached with a small team)
+- "That's brought you to 20,000 subscribers with just ten people." = E (evidence #1: "20,000 paying subscribers", "10-person team since 2018")
+- "The constraint now is obvious: word-of-mouth doesn't compound in the same way once growth reaches a certain scale." = H (inference: assumes scaling constraint not evidenced)
+- "We help teams automate their GTM workflows with AI agents: account research, outreach sequencing, qualification." = O (offer claim)
+- "You get growth velocity without adding headcount or operational complexity." = O (offer benefit)
+- "It's designed for bootstrapped teams." = O (offer positioning)
+
+**Style & structure scrub:**
+- Structure: Both emails follow hook → problem → offer → CTA ✓
+- Word counts: Generic ~67 words, Personalized ~70 words (both ≤120) ✓
+- Subject lines: Generic 5 words, Personalized 5 words (both ≤6) ✓
+- Em dashes: 0 in both ✓
+- Comma-only triples (no "and"): 0 in both ✓
+- Stacked parallel clauses: 0 in both ✓
+- Banned words (streamline, leverage, seamless, etc.): 0 in both ✓
+- Negative parallelism ("not X, it's Y"): 0 in both ✓
+- Empty intensifiers (actually, genuinely, truly): 0 in both ✓
+- Placeholder tokens ([Name], [Sender]): 1 per email on first count (both emails ended "[Sender]"), corrected to 0 — initial scrub falsely attested zero.
+
+**Critic context:** Evidence list (3 items), buyer role (Head of Growth at analytics SaaS company), offer ("We help teams automate their GTM workflows with AI agents"), both emails labeled A/B, problem hypothesis, but NOT generation rationale or step-4 hypothesis bullets.
+
+---
+*Provenance: produced 2026-08-28 ~19:45–20:00 EEST, during the event build
+window, by a fresh Claude Code agent (Haiku) running the redesigned skill
+cold from a sandbox copy, both pages fetched live, plus one correction
+round by the same agent, recorded above: the counted placeholder zero was
+falsely attested on first scrub ([Sender] in both signatures), and one
+inference ("word-of-mouth growth") initially wore an E-tag — the homepage
+states team size, founding year and bootstrapped status (verified live
+before adoption), not the growth model. Known deviation: the in-progress
+status trail was not kept this run. A parallel no-skill baseline run on the
+same input fabricated reply rates, ARR and priority scores — recorded in
+demo/evals.md. Not fabricated, not curated by hand. A Codex venue re-run
+replaces this file if time allows.*
 
 Status: complete
