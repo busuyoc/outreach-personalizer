@@ -11,8 +11,9 @@ signal — not whether personalized beats a deliberately weak strawman, and not
 a general claim that "personalization works." The score is a cheap,
 inspectable ranking signal for deciding what to say to THIS account — not a
 prediction of real reply rates. The deliverable is the GTM signal block at
-the end (pain hypothesis, evidence strength, winning angle, reusable
-signal), with the emails and the blind scores as its audit trail. If the
+the end (pain hypothesis, evidence strength, recommended effort, winning
+angle, reusable hypothesis), with the emails and the blind scores as its
+audit trail. If the
 generic email is weak, the result proves nothing.
 
 ## Input
@@ -134,7 +135,7 @@ offer in both emails.
    email is personalized from its content) and not an independent model. The
    critic's context contains only the evidence list, the buyer role, the
    offer, and both finished emails labeled "Email A" / "Email B" — not the
-   step-4 objections, not the generation rationale, and not the
+   step-4 hypothesis bullets, not the generation rationale, and not the
    slot-assignment rule below. Assign the slots mechanically, not by
    choice: count the letters in the company slug — even, generic is A;
    odd, personalized is A — so the generator never picks which email gets
@@ -151,7 +152,7 @@ offer in both emails.
    label, the labels are crossed — fix them before scoring anything.
    Score each 1–5 on:
    - **Reply likelihood** (primary) — would this buyer plausibly reply?
-   - **Specificity** — genuine understanding of this company, not just a
+   - **Specificity** — genuine understanding of this company, not just an
      inserted name.
    - **Credibility** — are claims supported by the evidence without
      stretching it?
@@ -165,9 +166,14 @@ offer in both emails.
    failed the strawman bar — the comparison is VOID; rewrite the generic
    email and re-run the critique rather than banking a hollow win.
    Personalized is allowed to lose. If the generic email's reply likelihood
-   is equal or higher, say so plainly. Only after scoring, reveal which
-   label was which. State the verdict using reply likelihood as the
-   deciding criterion, with specificity and credibility as supporting
+   is equal or higher, say so plainly. Only after scoring, reveal the
+   mapping EXPLICITLY, quoting subjects: "Email A = personalized —
+   '<subject>' · Email B = generic — '<subject>'". The letters A/B exist
+   ONLY inside this critique section (and the ledger's Slots row, which
+   restates the mapping): everywhere else the emails are named by role —
+   a reader who meets "Email A" twice with two meanings gets the verdict
+   backwards on a fast read. State the verdict using reply likelihood as
+   the deciding criterion, with specificity and credibility as supporting
    reasoning, not the primary claim.
 7. Write `demo/output/<company-slug>.md` incrementally, not at the end.
    Every write ENDS by appending a `Status: in progress (through step N)`
@@ -175,13 +181,15 @@ offer in both emails.
    the proof the file was built incrementally. The LAST line of the file
    is always its current state; the final append (after the step-9 ledger)
    is `Status: complete`, so a partial artifact can never be mistaken for
-   a finished one. Create the
-   file IMMEDIATELY after step 1 with the status line and the retrieval so
-   far (each source marked **live** or **cached**, with dates) — the
-   artifact must exist within seconds, before any reasoning; extend it
+   a finished one. Create the file IMMEDIATELY after step 1 with the
+   status line and the retrieval so far (each source marked **live** or
+   **cached**, with dates) — the artifact must exist within seconds,
+   before any reasoning; extend it
    after step 4 with the offer being tested, the evidence list, the buyer
    hypothesis bullets, and the **Why this account** sentence; append both
-   emails after step 5; append the blind critique, the reveal, and the
+   emails after step 5 — labeled by ROLE ("Generic email (baseline)" /
+   "Personalized email"), NEVER as "Email A/B"; the letters belong to the
+   critique's blind slots alone; append the blind critique, the reveal, and the
    verdict after step 6. A run cut off partway leaves a truthful partial
    artifact on disk.
 8. Close the file with a **GTM signal** block — the decision a growth team
@@ -261,7 +269,7 @@ offer in both emails.
 line, and contains: a sourced evidence list, a buyer hypothesis that
 distinguishes role priors from company evidence, a "Why this account"
 sentence, ONE written problem hypothesis that both emails demonstrably
-address, both emails passing the craft bar, a blind critique of each with
+address, both emails passing the craft + style bar, a blind critique of each with
 anchored scores and the slot arithmetic shown, a verdict — win, loss, or
 tie — decided on reply likelihood and explained honestly (VOID if the
 generic baseline scored ≤2), a GTM signal block ending in a

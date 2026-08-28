@@ -58,7 +58,7 @@ Status: in progress (through step 4)
 
 ## Emails
 
-### Email A (generic)
+### Generic email (baseline)
 
 **Subject:** When GTM automation compounds
 
@@ -75,7 +75,7 @@ Best,
 
 **Word count: 68 | Subject: 5 words**
 
-### Email B (personalized)
+### Personalized email
 
 **Subject:** Automating GTM without compliance friction
 
@@ -97,10 +97,6 @@ Best,
 ## Blind Critique (Step 6)
 
 **Slot assignment:** Company slug `plausible` = 9 letters, odd → personalized is Email A.
-
-**Relabeled emails for critique:**
-- Email A: "Automating GTM without compliance friction" (below)
-- Email B: "When GTM automation compounds" (below)
 
 **Pre-score verification:** Both emails address the problem hypothesis ("GTM teams relying on compliant, reliable analytics spend cycles on manual handoffs instead of optimization"). Email A adds "when tools don't align on compliance"; Email B stays with "manual handoffs between systems." Both are versions of the same underlying problem. ✓ Proceed.
 
@@ -133,6 +129,8 @@ Best,
 ---
 
 **Verdict:** Personalized (Email A) wins on reply likelihood: 4 vs. 3. Email A demonstrates specific understanding of Plausible's founding problem (data loss, compliance) and connects it credibly to GTM. Email B is competent but generic. Generic email is above the floor (3 > 2), so the comparison is valid. Personalized lift: +1 point on the primary metric (reply likelihood).
+
+**Reveal:** Email A = personalized — "Automating GTM without compliance friction" · Email B = generic — "When GTM automation compounds"
 
 Status: in progress (through step 6)
 
@@ -172,17 +170,20 @@ Status: in progress (through step 8)
 | **Fact audit** | Email A, claim 1: "hemorrhaging data to ad blockers and consent friction" → Evidence #2 (GA4 loses avg. 55.6%; Plausible less blocked). Email A, claim 2: "tools don't align on compliance" → Evidence #1 (GDPR, EU processing). Email B: Generic; no company-specific claims, no audit required. |
 | **Critic context** | Critic received: 3-item evidence list, buyer role (Head of Growth, Plausible), offer ("We help teams automate their GTM workflows with AI agents"), both emails labeled A/B (blind to generation intent, generation rationale, and step-4 hypothesis bullets; NOT blind to treatment identity). |
 
----
 *Provenance: produced 2026-08-28 ~19:05–19:15 EEST, during the event build
 window, by a fresh Claude Code agent (Haiku) running this skill cold from a
-sandbox copy of this repository, plus one correction round: the first style
-scrub falsely attested zero em dashes while both emails contained one — the
-false attestation was caught by an external count, and the agent corrected
-its own artifact and recorded the catch in the ledger row above. Homepage
-fetched live; comparison page from the committed cached snapshot, marked
-honestly. Known deviation: step 2 used the cache without attempting a live
-fetch (mild deviation from the one-attempt rule, honestly labeled). Not
-fabricated, not curated by hand. A Codex venue re-run replaces this file if
-time allows.*
+sandbox copy of this repository, plus two correction rounds by the same
+agent: (1) its first style scrub falsely attested zero em dashes while both
+emails contained one — caught by an external count; the agent fixed the
+punctuation and recorded the catch in the ledger row above; (2) the Emails
+section originally reused the "Email A/B" letters with the opposite meaning
+from the critique's blind slots — relabeled by role, with the explicit
+reveal line added after the verdict. Homepage fetched live; comparison page
+from the committed cached snapshot, marked honestly. Known deviation: step 2
+used the cache without attempting a live fetch (mild deviation from the
+one-attempt rule, honestly labeled). Not fabricated, not curated by hand. A
+Codex venue re-run replaces this file if time allows.*
+
+---
 
 Status: complete
