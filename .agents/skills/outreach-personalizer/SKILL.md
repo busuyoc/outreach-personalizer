@@ -11,8 +11,8 @@ grounding the message in that evidence beats a *strong* generic baseline on
 a simulated reply-likelihood signal. Not a strawman contest, and not a
 general claim that "personalization works." Knowing a lot about a company is
 not a reason to pitch it: rich evidence with no bridge to the offer means
-the honest output is "stay generic" — and that answer is product, not
-failure. The score is a cheap, inspectable ranking signal, not a prediction
+the honest output is probe first or deprioritize — with messaging effort
+decided separately — and that answer is product, not failure. The score is a cheap, inspectable ranking signal, not a prediction
 of real reply rates. The deliverable is the GTM signal block at the end
 (pain hypothesis, evidence strength, OFFER FIT, recommended effort, winning
 angle, reusable hypothesis), with the emails and the blind scores as its
@@ -356,6 +356,7 @@ baseline plus "Personalized test withheld: no grounded bridge to the
 offer."; and a GTM signal block ending in TWO decisions (account action ·
 messaging effort) with a why, a next probe, and a reusable hypothesis, and
 the Run ledger with every attestation filled, including the claim lock,
-a complete provenance audit, and a style & structure scrub showing all
-zero counts. The HTML rendering happens only on explicit request, never on
+a complete provenance audit (or "N/A — personalized test withheld" on the
+withheld branch), and a style & structure scrub showing all zero counts on
+whichever emails exist. The HTML rendering happens only on explicit request, never on
 the judged path.
